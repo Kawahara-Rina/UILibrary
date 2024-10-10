@@ -6,12 +6,30 @@ public class PanelManager : MonoBehaviour
 {
     // ズームイン・アウトするパネル
     [SerializeField] private GameObject panelZoom;
+    // スライドイン・アウトするパネル
+    [SerializeField] private GameObject panelSlide;
 
-    // フラグをセットする関数
-    public void SetBool(bool _flag)
+    // ズームするパネルのアクティブフラグをセットする関数
+    public void PanelZoomSetBool(bool _flag)
     {
+        // フラグがtrueの場合はパネルを表示する
+        if (_flag)
+            Common.SetActive(panelZoom, _flag);
+
         // アニメーションのアクティブフラグセット
         var anim = panelZoom.GetComponent<Animator>();
+        anim.SetBool("isActive", _flag);
+    }
+
+    // スライドするパネルのアクティブフラグをセットする関数
+    public void PanelSlideSetBool(bool _flag)
+    {
+        // フラグがtrueの場合はパネルを表示する
+        if (_flag)
+            Common.SetActive(panelSlide, _flag);
+
+        // アニメーションのアクティブフラグセット
+        var anim = panelSlide.GetComponent<Animator>();
         anim.SetBool("isActive", _flag);
     }
 

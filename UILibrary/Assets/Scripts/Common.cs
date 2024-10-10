@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Common
 {
+    // オブジェクトをアクティブ・非アクティブにする関数
+    public static void SetActive(GameObject _gameObject,bool _bool)
+    {
+        _gameObject.SetActive(_bool);
+    }
+
     // 遅延処理関数
     public static IEnumerator WaitForSecond(float _sec)
     {
