@@ -38,7 +38,7 @@ public class TextTest : MonoBehaviour
     void Start()
     {
         // ÅuHellow WorldÅvÇï\é¶Ç∑ÇÈ
-        ShowText("Hellow World",testText);
+        ShowText("Hello World",testText);
     }
 
     // Update is called once per frame
