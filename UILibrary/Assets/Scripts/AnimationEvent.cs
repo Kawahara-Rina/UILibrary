@@ -10,7 +10,21 @@ using UnityEngine;
 
 public class AnimationEvent : MonoBehaviour
 {
-    
+    /// <summary>
+    /// オブジェクトを表示する
+    /// </summary>
+    private void ObjectActive()
+    {
+        gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// オブジェクトを非表示にする
+    /// </summary>
+    private void ObjectAnActive()
+    {
+        gameObject.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()
