@@ -10,53 +10,59 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
-    // アニメーター取得用
-    private Animator animator;
+    #region - スケールの最大値
+    [Header("スケールの最大値(拡大時)")][Tooltip("0.0～1.0の値。0が小さい")]
+    [Range(Common.MIN_SCALE,Common.MAX_SCALE)]
+    #endregion
+    [SerializeField] private float maxScale;
 
-    // レクトトランスフォーム取得用
-    private Vector2 rTransform;
+    #region - スケールの最小値
+    [Header("スケールの最小値(縮小時)")][Tooltip("0.0～1.0の値。0が小さい")]
+    [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
+    #endregion
+    [SerializeField] private float minScale;
 
-    private float width;    // ボタンの幅  
-    private float height;   // ボタンの高さ
+    #region - アニメーションの速度
+    [Header("アニメーションの速度")][Tooltip("0.0～1.0の値。0が小さい")]
+    [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
+    #endregion
+    [SerializeField] private float samples;
 
-    // フラグをセットする関数
-    public void SetPointerEnterBool(bool _flag)
+    // スケールを変更する関数
+    /// <summary>
+    /// スケールを指定した値に変更する関数
+    /// </summary>
+    /// <param name="_x">スケールのx成分</param>
+    /// <param name="_y">スケールのy成分</param>
+    private void SetScale(float _x,float _y)
     {
-        animator.SetBool("isPointerEnter", _flag);
+        // スケールを引数の値に変更
+        var newScale=new Vector3(0,0,0);
+        newScale.x =_x;
+        newScale.y =_y;
+
+        // 子オブジェクトのスケールを変更
+        this.gameObject.transform.GetChild(0).localScale = newScale;
     }
 
+
     // サイズを小さくする
-    private void ReduceSize()
+    public void ReduceSize()
     {
-        rTransform.x =width*0.8f;
-        rTransform.y = height*0.8f;
-
-        GetComponent<RectTransform>().sizeDelta = rTransform;
-
+        // スケールを変更
+        SetScale(minScale,minScale);
     }
 
     // サイズを元にもどす
-    private void IncreaseSize()
+    public void IncreaseSize()
     {
-        rTransform.x = width;
-        rTransform.y = height;
-
-        GetComponent<RectTransform>().sizeDelta = rTransform;
-
+        // スケールを変更
+        SetScale(maxScale, maxScale);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // アニメーター取得
-        animator = GetComponent<Animator>();
-
-        // レクトトランスフォーム取得
-        rTransform = GetComponent<RectTransform>().sizeDelta;
-
-        // ボタンの幅と高さ取得
-        width = rTransform.x;
-        height = rTransform.y;
 
     }
 

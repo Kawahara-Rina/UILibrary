@@ -10,6 +10,10 @@ using UnityEngine.UI;
 
 public class Common
 {
+    // 共通定数
+    public const float MAX_SCALE = 1.0f;
+    public const float MIN_SCALE = 0.0f;
+
     /*
     // 列挙体シリアライズするとインスペクタからリストで選べる
     [SerializeField] test testa;
