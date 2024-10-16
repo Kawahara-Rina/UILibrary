@@ -404,8 +404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScale: 1
-  minScale: 0.22
-  samples: 0
+  minScale: 0.8
+  samples: 1.5
 --- !u!1001 &167339097
 PrefabInstance:
   m_ObjectHideFlags: 0

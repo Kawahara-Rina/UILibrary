@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
+
     #region - スケールの最大値
     [Header("スケールの最大値(拡大時)")][Tooltip("0.0～1.0の値。0が小さい")]
     [Range(Common.MIN_SCALE,Common.MAX_SCALE)]
@@ -23,52 +24,112 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private float minScale;
 
     #region - アニメーションの速度
-    [Header("アニメーションの速度")][Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
+    [Header("アニメーションの速度")][Tooltip("0.1～2.0の値。0が遅い")]
+    [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
     #endregion
     [SerializeField] private float samples;
 
-    // スケールを変更する関数
+    // スケールを変更する時のカウント
+    private float scaleCnt;
+
+    // ポインターがボタンに重なっているかどうかのフラグ
+    private bool isPointerEnter;
+
+    // スケールを変更する際に使用する新しいスケール値
+    private Vector3 newScale;
+
     /// <summary>
     /// スケールを指定した値に変更する関数
     /// </summary>
     /// <param name="_x">スケールのx成分</param>
     /// <param name="_y">スケールのy成分</param>
-    private void SetScale(float _x,float _y)
+    private void SetScale(float _x, float _y)
     {
-        // スケールを引数の値に変更
-        var newScale=new Vector3(0,0,0);
-        newScale.x =_x;
-        newScale.y =_y;
+        // ボタンにカーソルが重なっている時
+        if (isPointerEnter)
+        {
+            // スケールカウントを減算し、徐々に小さく
+            if (scaleCnt > _x)
+            {
+                scaleCnt -= samples * Time.deltaTime;
+            }
+            else
+            {
+                // スケールの最小値まで小さくなればカウントのリセット
+                scaleCnt = minScale;
+            }
+        }
+        // ボタンからカーソルが外れた時
+        else
+        {
+            //スケールカウントを加算し、徐々に大きく
+            if (scaleCnt < _x)
+            {
+                scaleCnt += samples * Time.deltaTime;
+            }
+            else
+            {
+                // スケールの最大値まで大きくなればカウントのリセット
+                scaleCnt = maxScale;
+            }
+        }
 
+        // 新しいスケール値をセット
+        newScale.x = scaleCnt;
+        newScale.y = scaleCnt;
         // 子オブジェクトのスケールを変更
         this.gameObject.transform.GetChild(0).localScale = newScale;
     }
 
-
-    // サイズを小さくする
+    /// <summary>
+    /// ボタンのサイズを小さくする処理
+    /// ボタンにカーソルが重なっているときに呼び出し(PointerEnter)
+    /// </summary>
     public void ReduceSize()
     {
-        // スケールを変更
-        SetScale(minScale,minScale);
+        // ボタンにカーソルが重なっているためフラグをオン
+        isPointerEnter = true;
     }
 
-    // サイズを元にもどす
+    /// <summary>
+    /// ボタンのサイズを大きくする処理
+    /// ボタンからカーソルが外れた時に呼び出し(PointerExit)
+    /// </summary>
     public void IncreaseSize()
     {
-        // スケールを変更
-        SetScale(maxScale, maxScale);
+        // ボタンからカーソルが外れたためフラグをオフ
+        isPointerEnter = false;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 変数の初期化を行う関数
+    /// </summary>
+    private void Init()
     {
+        scaleCnt = maxScale;
+        isPointerEnter = false;
+        newScale = new Vector3(0, 0, 0);
+    }
 
+    private void Awake()
+    {
+        // 初期化処理
+        Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // フラグの値によりスケールを変化
+        if (isPointerEnter)
+        {
+            // スケールを小さく
+            SetScale(minScale,minScale);
+        }
+        else
+        {
+            // スケールを大きく
+            SetScale(maxScale, maxScale);
+        }
     }
 }

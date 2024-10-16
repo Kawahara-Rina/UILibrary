@@ -11,8 +11,13 @@ using UnityEngine.UI;
 public class Common
 {
     // 共通定数
+    // スケールの最大値・最小値
     public const float MAX_SCALE = 1.0f;
     public const float MIN_SCALE = 0.0f;
+
+    // 再生速度の最大値・最小値
+    public const float MAX_SAMPLES = 2.0f;
+    public const float MIN_SAMPLES = 0.1f;
 
     /*
     // 列挙体シリアライズするとインスペクタからリストで選べる
