@@ -1649,6 +1649,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1171430505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171430507}
+  - component: {fileID: 1171430506}
+  m_Layer: 0
+  m_Name: TapEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1171430506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171430505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb3ba18b7b6dcd43a35632e1f6a54cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 1991bc63b29d48748b1c447497ff58b1, type: 3}
+  - {fileID: 21300000, guid: eed8121cce5fd6645bdf15843de78fcc, type: 3}
+  - {fileID: 21300000, guid: d8366b22ff0a7fb44b4389bfcc1e5f97, type: 3}
+  - {fileID: 21300000, guid: 61b1994ffaefab04ead82120bc0f2b7d, type: 3}
+  - {fileID: 21300000, guid: 8cddc2582852fbe4081a0d1165c52282, type: 3}
+  samples: 1.5
+  tapEffectPrefab: {fileID: 2916300579161049647, guid: 54d223c309a5ded4fa9e998243ac094b, type: 3}
+  canvas: {fileID: 38992946}
+--- !u!4 &1171430507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171430505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.232395, y: -0.17547901, z: 2555.3508}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1443660118 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8369068125888433503, guid: 4c09e16acd3da3645a3c39c4cb21d89a, type: 3}
@@ -2290,3 +2343,4 @@ SceneRoots:
   - {fileID: 2119132270}
   - {fileID: 112275476}
   - {fileID: 34306801}
+  - {fileID: 1171430507}
