@@ -12,19 +12,22 @@ public class ButtonManager : MonoBehaviour
 {
 
     #region - スケールの最大値
-    [Header("スケールの最大値(拡大時)")][Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_SCALE,Common.MAX_SCALE)]
+    [Header("スケールの最大値(拡大時)")]
+    [Tooltip("0.0～1.0の値。0が小さい")]
+    [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
     #endregion
     [SerializeField] private float maxScale;
 
     #region - スケールの最小値
-    [Header("スケールの最小値(縮小時)")][Tooltip("0.0～1.0の値。0が小さい")]
+    [Header("スケールの最小値(縮小時)")]
+    [Tooltip("0.0～1.0の値。0が小さい")]
     [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
     #endregion
     [SerializeField] private float minScale;
 
     #region - アニメーションの速度
-    [Header("アニメーションの速度")][Tooltip("0.1～2.0の値。0が遅い")]
+    [Header("アニメーションの速度")]
+    [Tooltip("0.1～4.0の値。0が遅い")]
     [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
     #endregion
     [SerializeField] private float samples;
@@ -41,9 +44,8 @@ public class ButtonManager : MonoBehaviour
     /// <summary>
     /// スケールを指定した値に変更する関数
     /// </summary>
-    /// <param name="_x">スケールのx成分</param>
-    /// <param name="_y">スケールのy成分</param>
-    private void SetScale(float _x, float _y)
+    /// <param name="_scale">もとにするスケール</param>
+    private void SetScale(float _scale)
     {
         // TODO アニメーションのブラッシュアップ
 
@@ -51,7 +53,7 @@ public class ButtonManager : MonoBehaviour
         if (isPointerEnter)
         {
             // スケールカウントを減算し、徐々に小さく
-            if (scaleCnt > _x)
+            if (scaleCnt > _scale)
             {
                 scaleCnt -= samples * Time.deltaTime;
             }
@@ -65,14 +67,14 @@ public class ButtonManager : MonoBehaviour
         else
         {
             //スケールカウントを加算し、徐々に大きく
-            if (scaleCnt < _x)
+            if (scaleCnt < Common.MAX_SCALE)
             {
                 scaleCnt += samples * Time.deltaTime;
             }
             else
             {
                 // スケールの最大値まで大きくなればカウントのリセット
-                scaleCnt = maxScale;
+                scaleCnt = Common.MAX_SCALE;
             }
         }
 
@@ -108,9 +110,14 @@ public class ButtonManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        scaleCnt = maxScale;
+        // カウントの初期化
+        scaleCnt = Common.MAX_SCALE;
         isPointerEnter = false;
         newScale = new Vector3(0, 0, 0);
+
+        // 親のサイズの初期化
+        transform.localScale = new Vector3(maxScale, maxScale, maxScale);
+
     }
 
     private void Awake()
@@ -126,12 +133,12 @@ public class ButtonManager : MonoBehaviour
         if (isPointerEnter)
         {
             // スケールを小さく
-            SetScale(minScale,minScale);
+            SetScale(minScale);
         }
         else
         {
             // スケールを大きく
-            SetScale(maxScale, maxScale);
+            SetScale(maxScale);
         }
     }
 }

@@ -3,7 +3,8 @@
     2024/10/11　Kawahara Rina
 
     複数のスクリプトから使用する定数や汎用関数などをまとめたクラス
-*/using System.Collections;
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ public class Common
     public const float MIN_SCALE = 0.0f;
 
     // 再生速度の最大値・最小値
-    public const float MAX_SAMPLES = 2.0f;
+    public const float MAX_SAMPLES = 4.0f;
     public const float MIN_SAMPLES = 0.1f;
 
     /*
