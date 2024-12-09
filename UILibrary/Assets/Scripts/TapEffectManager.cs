@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TapEffectManager : MonoBehaviour
@@ -50,14 +51,13 @@ public class TapEffectManager : MonoBehaviour
         canvasRect = canvas.GetComponent<RectTransform>();
 
         // プレファブをリストに登録
-        for(int i = 0; i < Common.GENERATE_COUNT; i++)
+        for (int i = 0; i < Common.GENERATE_COUNT; i++)
         {
             var tmp = Instantiate(tapEffectPrefab);
             tmp.gameObject.transform.SetParent(canvas.transform, false);
 
             objList.Add(tmp);
         }
-
     }
 
     /// <summary>
@@ -106,6 +106,11 @@ public class TapEffectManager : MonoBehaviour
         {
             // タップした座標にタップエフェクトを表示
             ShowTapEffect();
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            SceneManager.LoadScene("New Scene");
         }
     }
 }
