@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class TapEffectManager : MonoBehaviour
+public class LongTapEffectManager : MonoBehaviour
 {
     #region - 使用する画像を格納する配列
     [Header("使用する画像(アニメーション順)")]
@@ -15,15 +13,15 @@ public class TapEffectManager : MonoBehaviour
     #region - アニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
-    [Range( Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
+    [Range(Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
     #endregion
     [SerializeField] public float samples;
 
     #region - タップエフェクトプレファブ
     [Header("プレファブ ”TapEffect”を格納")]
-    [Tooltip("Assets/Resources/Prefabs/TapEffect")]
+    [Tooltip("Assets/Resources/Prefabs/LongTapEffect")]
     #endregion
-    [SerializeField] GameObject tapEffectPrefab;
+    [SerializeField] GameObject longTapEffectPrefab;
 
     #region - タップエフェクトを表示するキャンバス
     [Header("タップエフェクトを表示するキャンバス")]
@@ -41,6 +39,9 @@ public class TapEffectManager : MonoBehaviour
     // リストの添え字を指定するためのカウント
     private int index;
 
+    // 表示までのタイマー
+    private float showTimer;
+
     /// <summary>
     /// 初期化処理 
     /// </summary>
@@ -52,7 +53,7 @@ public class TapEffectManager : MonoBehaviour
         // プレファブをリストに登録
         for (int i = 0; i < Common.GENERATE_COUNT; i++)
         {
-            var tmp = Instantiate(tapEffectPrefab);
+            var tmp = Instantiate(longTapEffectPrefab);
             tmp.gameObject.transform.SetParent(canvas.transform, false);
 
             objList.Add(tmp);
@@ -62,8 +63,9 @@ public class TapEffectManager : MonoBehaviour
     /// <summary>
     // タップエフェクトの表示を行う関数
     /// </summary>
-    private void ShowTapEffect()
+    private void ShowLongTapEffect()
     {
+        showTimer += Time.deltaTime;
         // タップした場所を取得
         // キャンバスのレクトトランスフォーム内にあるマウスの位置をローカル座標に変換
         RectTransformUtility.ScreenPointToLocalPointInRectangle
@@ -71,24 +73,28 @@ public class TapEffectManager : MonoBehaviour
             Input.mousePosition,
             canvas.worldCamera,
             out mPos);
-
-        // リストの中のオブジェクトを表示
-        objList[index].gameObject.transform.localPosition = new Vector2(mPos.x,mPos.y);
-        objList[index].gameObject.SetActive(true);
-
-        // EffectAnimationコルーチンを開始
-        StartCoroutine(objList[index].GetComponent<TapEffect>().EffectAnimation(
-            sprites,
-            samples * Common.MIN_SAMPLES));
-
-        // 添え字をカウント
-        if (index < Common.GENERATE_COUNT-1)
+        if (showTimer >= 0.01f)
         {
-            index++;
-        }
-        else
-        {
-            index = 0;
+            // リストの中のオブジェクトを表示
+            objList[index].gameObject.transform.localPosition = new Vector2(mPos.x, mPos.y);
+            objList[index].gameObject.SetActive(true);
+
+            // EffectAnimationコルーチンを開始
+            StartCoroutine(objList[index].GetComponent<LongTapEffect>().EffectAnimation(
+                sprites,
+                samples * Common.MIN_SAMPLES));
+
+            // 添え字をカウント
+            if (index < Common.GENERATE_COUNT - 1)
+            {
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
+
+            showTimer = 0;
         }
     }
 
@@ -101,10 +107,10 @@ public class TapEffectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             // タップした座標にタップエフェクトを表示
-            ShowTapEffect();
+            ShowLongTapEffect();
         }
     }
 }
