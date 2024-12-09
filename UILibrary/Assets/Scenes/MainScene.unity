@@ -1684,7 +1684,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 51ff4a5d4a3e461429f1b71d1b2c5cf1, type: 3}
   - {fileID: 21300000, guid: 01e773e19f1cd50468158d1c104f6c51, type: 3}
   - {fileID: 21300000, guid: 0ca8c9d22ce2de246a4fc1f36de1a08d, type: 3}
-  samples: 4
+  samples: 0.43
   tapEffectPrefab: {fileID: 2916300579161049647, guid: 54d223c309a5ded4fa9e998243ac094b, type: 3}
   canvas: {fileID: 38992949}
 --- !u!4 &1171430507

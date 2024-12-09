@@ -36,6 +36,11 @@ public class TapEffectManager : MonoBehaviour
     // ポインター(マウス)の位置
     private Vector2 mPos;
 
+    // あらかじめオブジェクトを生成するためのリスト
+    private List<GameObject> objList = new List<GameObject>();
+    // リストの添え字を指定するためのカウント
+    private int index;
+
     /// <summary>
     /// 初期化処理 
     /// </summary>
@@ -43,9 +48,21 @@ public class TapEffectManager : MonoBehaviour
     {
         // キャンバスのレクトトランスフォーム取得
         canvasRect = canvas.GetComponent<RectTransform>();
+
+        // プレファブをリストに登録
+        for(int i = 0; i < Common.GENERATE_COUNT; i++)
+        {
+            var tmp = Instantiate(tapEffectPrefab);
+            tmp.gameObject.transform.SetParent(canvas.transform, false);
+
+            objList.Add(tmp);
+        }
+
     }
 
+    /// <summary>
     // タップエフェクトの表示を行う関数
+    /// </summary>
     private void ShowTapEffect()
     {
         // タップした場所を取得
@@ -56,10 +73,24 @@ public class TapEffectManager : MonoBehaviour
             canvas.worldCamera,
             out mPos);
 
-        // タップエフェクトプレファブを生成
-        var obj = Instantiate(tapEffectPrefab, new Vector3(mPos.x, mPos.y, 0), Quaternion.identity);
-        obj.transform.SetParent(canvas.transform, false);
+        // リストの中のオブジェクトを表示
+        objList[index].gameObject.transform.localPosition = new Vector2(mPos.x,mPos.y);
+        objList[index].gameObject.SetActive(true);
 
+        // EffectAnimationコルーチンを開始
+        StartCoroutine(objList[index].GetComponent<TapEffect>().EffectAnimation(
+            sprites,
+            samples * Common.MIN_SAMPLES));
+
+        // 添え字をカウント
+        if (index < Common.GENERATE_COUNT-1)
+        {
+            index++;
+        }
+        else
+        {
+            index = 0;
+        }
     }
 
     private void Awake()
