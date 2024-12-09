@@ -40,15 +40,22 @@ public class TapEffect : MonoBehaviour
         StartCoroutine(EffectAnimation(_sprites, _samples, _sec));
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    private void Init()
     {
-        tapEffectManager =GameObject.Find("TapEffectManager").GetComponent<TapEffectManager>();
+        // タップエフェクトマネージャー取得
+        tapEffectManager = GameObject.Find("TapEffectManager").GetComponent<TapEffectManager>();
 
-        StartCoroutine(EffectAnimation(tapEffectManager.sprites, tapEffectManager.samples,1.0f));
+        // 画像の切り替わり処理実行
+        StartCoroutine(EffectAnimation(tapEffectManager.sprites, tapEffectManager.samples, tapEffectManager.samples * Common.MIN_SAMPLES));
+    }
 
+    private void Awake()
+    {
+        // 初期化処理
+        Init();
     }
 
     // Update is called once per frame

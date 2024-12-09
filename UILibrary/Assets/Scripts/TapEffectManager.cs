@@ -13,8 +13,8 @@ public class TapEffectManager : MonoBehaviour
 
     #region - アニメーションの速度
     [Header("アニメーションの速度")]
-    [Tooltip("0.1～2.0の値。0が遅い")]
-    [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
+    [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
+    [Range( Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
     #endregion
     [SerializeField] public float samples;
 
@@ -29,34 +29,52 @@ public class TapEffectManager : MonoBehaviour
     //[Tooltip("Assets/Resources/Prefabs/TapEffect")]
     #endregion
     // 表示するキャンバス
-    [SerializeField] GameObject canvas;
-    
+    [SerializeField] Canvas canvas;
 
-    // 初期化処理
+    // キャンバス内のレクトトランスフォーム取得用
+    private RectTransform canvasRect;
+    // ポインター(マウス)の位置
+    private Vector2 mPos;
+
+    /// <summary>
+    /// 初期化処理 
+    /// </summary>
     private void Init()
     {
+        // キャンバスのレクトトランスフォーム取得
+        canvasRect = canvas.GetComponent<RectTransform>();
+    }
+
+    // タップエフェクトの表示を行う関数
+    private void ShowTapEffect()
+    {
+        // タップした場所を取得
+        // キャンバスのレクトトランスフォーム内にあるマウスの位置をローカル座標に変換
+        RectTransformUtility.ScreenPointToLocalPointInRectangle
+            (canvasRect,
+            Input.mousePosition,
+            canvas.worldCamera,
+            out mPos);
+
+        // タップエフェクトプレファブを生成
+        var obj = Instantiate(tapEffectPrefab, new Vector3(mPos.x, mPos.y, 0), Quaternion.identity);
+        obj.transform.SetParent(canvas.transform, false);
+
     }
 
     private void Awake()
     {
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // タップエフェクトプレファブを生成
-        var obj = Instantiate(tapEffectPrefab);
-        obj.transform.SetParent(canvas.transform, false);
-
-        //var tapEffect = tapEffectPrefab.GetComponent<TapEffect>();
-
-        //StartCoroutine(tapEffect.EffectAnimation(sprites, samples,1.0f));
-
+        // 初期化処理
+        Init();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            // タップした座標にタップエフェクトを表示
+            ShowTapEffect();
+        }
     }
 }
