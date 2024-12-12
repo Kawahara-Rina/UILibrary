@@ -5,11 +5,20 @@ using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
 {
+    // フェードインかアウトかを指定するための列挙体
+    public
+        enum FadeType
+    {
+        fadeIn,
+        fadeOut
+    };
+
     #region - フェードイン・アウトの指定
-    [Header("フェードイン・アウトの指定(true:フェードイン,false:フェードアウト)")]
+    [Header("フェードイン・アウトの指定")]
     [Tooltip("動的に制御したい場合は、任意のタイミングでこのフラグを切り替えてください。")]
     #endregion
-    [SerializeField] public bool isFadeIn = true;
+    [SerializeField] public FadeType fadeType = FadeType.fadeIn;
+    
 
     #region - 最初からアニメーションをするかどうか
     [Header("最初からアニメーションをするかどうか(true:する,false:しない)")]
@@ -56,7 +65,7 @@ public class FadeManager : MonoBehaviour
     {
         if (isFirst)
         {
-            if (isFadeIn)
+            if (fadeType==FadeType.fadeIn)
             {
                 // フェードイン→黒から透明に変化するため、アルファ値は1.0
                 GetComponent<CanvasGroup>().alpha = 1.0f;
@@ -77,7 +86,7 @@ public class FadeManager : MonoBehaviour
     private void Fade()
     {
         // フェードイン
-        if (isFadeIn)
+        if (fadeType == FadeType.fadeIn)
         {
             if (GetComponent<CanvasGroup>().alpha > minAlpha)
             {
