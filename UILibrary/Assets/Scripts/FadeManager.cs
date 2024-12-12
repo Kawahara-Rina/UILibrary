@@ -19,7 +19,6 @@ public class FadeManager : MonoBehaviour
     #endregion
     [SerializeField] public FadeType fadeType = FadeType.fadeIn;
     
-
     #region - 最初からアニメーションをするかどうか
     [Header("最初からアニメーションをするかどうか(true:する,false:しない)")]
     [Tooltip("最初から表示しない場合は、任意のタイミングでこのフラグをtrueにしてください。")]
