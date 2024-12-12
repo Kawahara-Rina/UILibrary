@@ -16,6 +16,10 @@ public class Common
     public const float MAX_SCALE = 1.0f;
     public const float MIN_SCALE = 0.0f;
 
+    // 透明度の最大値・最小値
+    public const float MAX_ALPHA = 1.0f;
+    public const float MIN_ALPHA = 0.0f;
+
     // 再生速度の最大値・最小値
     public const float MAX_SAMPLES = 4.0f;
     public const float MIN_SAMPLES = 0.1f;

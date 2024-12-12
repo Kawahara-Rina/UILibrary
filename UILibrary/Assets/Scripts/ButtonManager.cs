@@ -16,21 +16,21 @@ public class ButtonManager : MonoBehaviour
     [Tooltip("0.0～1.0の値。0が小さい")]
     [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
     #endregion
-    [SerializeField] private float maxScale;
+    [SerializeField] private float maxScale = 1.0f;
 
     #region - スケールの最小値
     [Header("スケールの最小値(縮小時)")]
     [Tooltip("0.0～1.0の値。0が小さい")]
     [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
     #endregion
-    [SerializeField] private float minScale;
+    [SerializeField] private float minScale = 0.85f;
 
     #region - アニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。0が遅い")]
     [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
     #endregion
-    [SerializeField] private float samples;
+    [SerializeField] private float samples = 2.7f;
 
     // スケールを変更する時のカウント
     private float scaleCnt;

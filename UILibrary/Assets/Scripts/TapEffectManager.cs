@@ -24,14 +24,14 @@ public class TapEffectManager : MonoBehaviour
     [Header("使用する画像(アニメーション順)")]
     [Tooltip("2～5枚？")]
     #endregion
-    [SerializeField] public Sprite[] tapEffectSprites;
+    [SerializeField] public Sprite[] tapEffectSprites = new Sprite[5];
 
     #region - タップエフェクトのアニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
     [Range( Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
     #endregion
-    [SerializeField] public float tapEffectSamples;
+    [SerializeField] public float tapEffectSamples = 0.4f;
 
 
     [Header("-ロングタップエフェクト-------------------")]
@@ -40,21 +40,21 @@ public class TapEffectManager : MonoBehaviour
     [Header("使用する画像(アニメーション順)")]
     [Tooltip("2～5枚？")]
     #endregion
-    [SerializeField] public Sprite[] longTapEffectSprites;
+    [SerializeField] public Sprite[] longTapEffectSprites = new Sprite[5];
 
     #region - ロングタップエフェクトのアニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
     [Range(Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
     #endregion
-    [SerializeField] public float longTapEffectSamples;
+    [SerializeField] public float longTapEffectSamples = 1.0f;
 
     #region - ロングタップエフェクトの生成速度
     [Header("エフェクト生成の速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
     [Range(Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
     #endregion
-    [SerializeField] public float generateSamples;
+    [SerializeField] public float generateSamples = 0.1f;
 
 
     // キャンバス内のレクトトランスフォーム取得用
