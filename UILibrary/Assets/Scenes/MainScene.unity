@@ -1086,58 +1086,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &640525210
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 640525211}
-  - component: {fileID: 640525212}
-  m_Layer: 0
-  m_Name: LongTapEffectManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &640525211
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640525210}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10646939, y: -1.3514656, z: 1176.934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &640525212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640525210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1a33d230870c342a64ee7c06157bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 2a11ec3f6adfe2d449ca91c676f7a10a, type: 3}
-  - {fileID: 21300000, guid: c588b97eca9171a4b8c080ac610eb0c8, type: 3}
-  - {fileID: 21300000, guid: 4737f3e777730c442aa25d687dfdb382, type: 3}
-  - {fileID: 21300000, guid: a81713bf5ddc9ed489342b2b45be8a40, type: 3}
-  samples: 1
-  longTapEffectPrefab: {fileID: 4281419672511113916, guid: 3065fd58dd88f7e4598224c515b1d4b7, type: 3}
-  canvas: {fileID: 1259435592}
 --- !u!1 &810718561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3ba18b7b6dcd43a35632e1f6a54cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
+  tapEffectPrefab: {fileID: 2916300579161049647, guid: 54d223c309a5ded4fa9e998243ac094b, type: 3}
+  canvas: {fileID: 1259435592}
+  tapEffectSprites:
   - {fileID: 21300000, guid: c586bdf6fc36aeb47aa1663d762d1d79, type: 3}
   - {fileID: 21300000, guid: 2a11ec3f6adfe2d449ca91c676f7a10a, type: 3}
   - {fileID: 21300000, guid: c588b97eca9171a4b8c080ac610eb0c8, type: 3}
@@ -1740,9 +1690,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1cf25f9329e74d9439fba45eeefd98e2, type: 3}
   - {fileID: 21300000, guid: a81713bf5ddc9ed489342b2b45be8a40, type: 3}
   - {fileID: 21300000, guid: 342a2eecbc4dabe4183fb8c072d922ac, type: 3}
-  samples: 0.43
-  tapEffectPrefab: {fileID: 2916300579161049647, guid: 54d223c309a5ded4fa9e998243ac094b, type: 3}
-  canvas: {fileID: 1259435592}
+  tapEffectSamples: 0.4
+  longTapEffectSprites:
+  - {fileID: 21300000, guid: 2a11ec3f6adfe2d449ca91c676f7a10a, type: 3}
+  - {fileID: 21300000, guid: 81149e793fbfe334d8149a8d16af99f0, type: 3}
+  - {fileID: 21300000, guid: 4737f3e777730c442aa25d687dfdb382, type: 3}
+  - {fileID: 21300000, guid: a81713bf5ddc9ed489342b2b45be8a40, type: 3}
+  longTapEffectSamples: 1
+  generateSamples: 0.1
 --- !u!4 &1171430507
 Transform:
   m_ObjectHideFlags: 0
@@ -1752,7 +1707,7 @@ Transform:
   m_GameObject: {fileID: 1171430505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.232395, y: -0.17547901, z: 2555.3508}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2502,4 +2457,3 @@ SceneRoots:
   - {fileID: 112275476}
   - {fileID: 34306801}
   - {fileID: 1171430507}
-  - {fileID: 640525211}

@@ -21,7 +21,7 @@ public class Common
     public const float MIN_SAMPLES = 0.1f;
 
     // タップエフェクト関連
-    public const int GENERATE_COUNT = 60;   // プレファブ初期生成時の個数
+    public const int GENERATE_COUNT = 120;   // プレファブ初期生成時の個数
     public const float GENERATE_POS = 100;  // プレファブ初期生成時の座標
 
     /*
