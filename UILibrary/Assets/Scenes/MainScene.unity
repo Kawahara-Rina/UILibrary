@@ -949,7 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3ba18b7b6dcd43a35632e1f6a54cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapEffectPrefab: {fileID: 2916300579161049647, guid: 54d223c309a5ded4fa9e998243ac094b, type: 3}
   canvas: {fileID: 1259435592}
   tapEffectSprites:
   - {fileID: 21300000, guid: c586bdf6fc36aeb47aa1663d762d1d79, type: 3}
@@ -961,7 +960,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1cf25f9329e74d9439fba45eeefd98e2, type: 3}
   - {fileID: 21300000, guid: a81713bf5ddc9ed489342b2b45be8a40, type: 3}
   - {fileID: 21300000, guid: 342a2eecbc4dabe4183fb8c072d922ac, type: 3}
-  tapEffectSamples: 0.4
+  tapEffectSamples: 0.77
   longTapEffectSprites:
   - {fileID: 21300000, guid: 2a11ec3f6adfe2d449ca91c676f7a10a, type: 3}
   - {fileID: 21300000, guid: 81149e793fbfe334d8149a8d16af99f0, type: 3}

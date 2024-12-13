@@ -3,20 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class TapEffectManager : MonoBehaviour
 {
-    // TODO パッケージの中のパスを取得できるからそれに変更
-    #region - タップエフェクトプレファブ
-    [Header("プレファブ ”TapEffect”を格納")]
-    [Tooltip("Assets/Resources/Prefabs/TapEffect")]
-    #endregion
-    [SerializeField] GameObject tapEffectPrefab;
 
     #region - タップエフェクトを表示するキャンバス
     [Header("タップエフェクトを表示するキャンバス")]
     #endregion
-    // 表示するキャンバス
     [SerializeField] Canvas canvas;
 
     [Header("-タップエフェクト-------------------------")]
@@ -57,6 +51,8 @@ public class TapEffectManager : MonoBehaviour
     #endregion
     [SerializeField] public float generateSamples = 0.1f;
 
+    // パッケージ内のプレファブ取得用
+    private GameObject tapEffectPrefab;
 
     // キャンバス内のレクトトランスフォーム取得用
     private RectTransform canvasRect;
@@ -78,6 +74,11 @@ public class TapEffectManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
+        // TODO パス指定
+        // パッケージ内のタップエフェクトプレファブを取得
+        tapEffectPrefab =Resources.Load<GameObject>
+            ("Prefabs/TapEffect");
+
         // キャンバスのレクトトランスフォーム取得
         canvasRect = canvas.GetComponent<RectTransform>();
 

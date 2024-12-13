@@ -23,6 +23,13 @@ public class SlideManager : MonoBehaviour
         SlideOut
     };
 
+    [Header("***************使用する時の注意***************")]
+    [Header("スライドイン   ：SlideIn()を呼び出す")]
+    [Header("スライドアウト：SlideOut()を呼び出す")]
+    [Header("上記の関数を呼んだあとにスライドさせたい方向の関数を呼び出す")]
+    [Header("上から中央に向けてスライドインさせる場合:SlideIn()、ShowUpToBottom()を呼び出だす\n")]
+
+
     #region - スライド"イン"時の開始位置(ローカルポジション)
     [Header("スライド”イン”時の開始位置")]
     #endregion
@@ -48,7 +55,8 @@ public class SlideManager : MonoBehaviour
     [Tooltip("0.1～4.0の値。0が遅い")]
     [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
     #endregion
-    [SerializeField] private float samples = 1.0f;
+    [SerializeField] private float samples = 2.0f;
+
 
     // スライド方向の指定用
     private FlowType flowType = FlowType.UpToBottom;
