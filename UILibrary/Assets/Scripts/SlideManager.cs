@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SlideManager : MonoBehaviour
 {
-    // フェードインかアウトかを指定するための列挙体
-    public
-        enum FlowType
+    // 定数
+    private const float ADD_SPEED = 5000.0f;
+
+    // スライドの方向を指定するための列挙体
+    private enum FlowType
     {
         UpToBottom,
         BottomToUp,
@@ -14,20 +16,12 @@ public class SlideManager : MonoBehaviour
         LeftToRight
     };
 
-    public
-        enum SlideType
+    // スライドインかアウトを指定するための列挙体
+    private enum SlideType
     {
         SlideIn,
         SlideOut
     };
-
-    /*
-    #region - スライド方向の指定
-    [Header("スライド方向の指定")]
-    [Tooltip("動的に制御したい場合は、任意のタイミングでこのフラグを切り替えてください。")]
-    #endregion
-    [SerializeField] public FlowType flowType = FlowType.UpToBottom;
-    */
 
     #region - スライド"イン"時の開始位置(ローカルポジション)
     [Header("スライド”イン”時の開始位置")]
@@ -56,27 +50,6 @@ public class SlideManager : MonoBehaviour
     #endregion
     [SerializeField] private float samples = 1.0f;
 
-    /*
-    #region - 透明度の変化をつけるかどうかのフラグ
-    [Header("透明度の変化をつけるかを指定(true:変化あり,false:変化なし)")]
-    #endregion
-    [SerializeField] public bool isChangeAlpha = false;
-
-    #region - 透明度の最大値
-    [Header("透明度の最大値(CanvasGroupの透明度)")]
-    [Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_ALPHA, Common.MAX_ALPHA)]
-    #endregion
-    [SerializeField] private float maxAlpha = 1.0f;
-
-    #region - 透明度の最小値
-    [Header("透明度の最小値(CanvasGroupの透明度)")]
-    [Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_ALPHA, Common.MAX_ALPHA)]
-    #endregion
-    [SerializeField] private float minAlpha = 0;
-    */
-
     // スライド方向の指定用
     private FlowType flowType = FlowType.UpToBottom;
 
@@ -85,6 +58,7 @@ public class SlideManager : MonoBehaviour
 
     // スライドイン・アウトどちらかのフラグ
     private SlideType slideType;
+
     // アニメーションを再生するかどうか
     private bool isShow = false;
 
@@ -172,93 +146,134 @@ public class SlideManager : MonoBehaviour
         flowType = FlowType.LeftToRight;
     }
 
+    /// <summary>
+    /// 移動処理(スライド)部分
+    /// </summary>
+    private void Slide()
+    {
+        // 現在の座標を取得
+        pos = transform.localPosition;
+
+        // スライドの方向に応じて移動処理を変更
+        switch (flowType)
+        {
+            case FlowType.UpToBottom:
+
+                if (slideType == SlideType.SlideIn)
+                {
+                    if (pos.y > inStopPos)
+                    {
+                        pos.y -= Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.y = inStopPos;
+                    }
+                }
+                else
+                {
+                    if (pos.y > outStopPos)
+                    {
+                        pos.y -= Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.y = outStopPos;
+                    }
+                }
+                break;
+
+            case FlowType.BottomToUp:
+
+                if (slideType == SlideType.SlideIn)
+                {
+                    if (pos.y < inStopPos)
+                    {
+                        pos.y += Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.y = inStopPos;
+                    }
+                }
+                else
+                {
+                    if (pos.y < outStopPos)
+                    {
+                        pos.y += Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.y = outStopPos;
+                    }
+                }
+                break;
+
+            case FlowType.RightToLeft:
+
+                if (slideType == SlideType.SlideIn)
+                {
+                    if (pos.x > inStopPos)
+                    {
+                        pos.x -= Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.x = inStopPos;
+                    }
+                }
+                else
+                {
+                    if (pos.x > outStopPos)
+                    {
+                        pos.x -= Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.x = outStopPos;
+                    }
+                }
+                break;
+
+            case FlowType.LeftToRight:
+
+                if (slideType == SlideType.SlideIn)
+                {
+                    if (pos.x < inStopPos)
+                    {
+                        pos.x += Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.x = inStopPos;
+                    }
+                }
+                else
+                {
+                    if (pos.x < outStopPos)
+                    {
+                        pos.x += Time.deltaTime * samples * ADD_SPEED;
+                    }
+                    else
+                    {
+                        pos.x = outStopPos;
+                    }
+                }
+                break;
+        }
+
+        // 現在の座標を変更
+        transform.localPosition = new Vector2(pos.x, pos.y);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // TODO 停止位置で止まらないのを修正
+        // アニメーション再生時
         if (isShow)
         {
-            // 現在の座標を取得
-            pos = transform.localPosition;
-
-            // スライドの方向に応じて移動処理を変更
-            switch (flowType)
-            {
-                case FlowType.UpToBottom:
-
-                    if (slideType == SlideType.SlideIn)
-                    {
-                        if (pos.y > inStopPos)
-                        {
-                            pos.y -= Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    else
-                    {
-                        if (pos.y > outStopPos)
-                        {
-                            pos.y -= Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    break;
-
-                case FlowType.BottomToUp:
-
-                    if (slideType == SlideType.SlideIn)
-                    {
-                        if (pos.y < inStopPos)
-                        {
-                            pos.y += Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    else
-                    {
-                        if (pos.y < outStopPos)
-                        {
-                            pos.y += Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    break;
-
-                case FlowType.RightToLeft:
-
-                    if (slideType == SlideType.SlideIn)
-                    {
-                        if (pos.x > inStopPos)
-                        {
-                            pos.x -= Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    else
-                    {
-                        if (pos.x > outStopPos)
-                        {
-                            pos.x -= Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    break;
-
-                case FlowType.LeftToRight:
-
-                    if (slideType == SlideType.SlideIn)
-                    {
-                        if (pos.x < inStopPos)
-                        {
-                            pos.x += Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    else
-                    {
-                        if (pos.x < outStopPos)
-                        {
-                            pos.x += Time.deltaTime * samples * 3000.0f;
-                        }
-                    }
-                    break;
-            }
-
-            // 現在の座標を変更
-            transform.localPosition = new Vector2(pos.x, pos.y);
+            // 移動処理実行
+            Slide();
         }
     }
 }

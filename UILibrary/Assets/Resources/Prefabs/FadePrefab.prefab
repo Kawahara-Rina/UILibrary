@@ -105,4 +105,4 @@ MonoBehaviour:
   isShow: 1
   maxAlpha: 1
   minAlpha: 0
-  samples: 0.32
+  samples: 0.5

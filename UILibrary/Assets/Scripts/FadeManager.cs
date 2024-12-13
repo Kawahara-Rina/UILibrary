@@ -50,6 +50,24 @@ public class FadeManager : MonoBehaviour
     private bool isFirst;
 
     /// <summary>
+    /// フェードインを行うタイミングで呼び出す関数
+    /// </summary>
+    public void ShowFadeIn()
+    {
+        fadeType = FadeType.fadeIn;
+        isShow = true;
+    }
+
+    /// <summary>
+    /// フェードアウトを行うタイミングで呼び出す関数
+    /// </summary>
+    public void ShowFadeOut()
+    {
+        fadeType = FadeType.fadeOut;
+        isShow = true;
+    }
+
+    /// <summary>
     /// 初期化処理
     /// </summary>
     private void Init()

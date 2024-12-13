@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TapEffectManager : MonoBehaviour
 {
+    // TODO パッケージの中のパスを取得できるからそれに変更
     #region - タップエフェクトプレファブ
     [Header("プレファブ ”TapEffect”を格納")]
     [Tooltip("Assets/Resources/Prefabs/TapEffect")]
