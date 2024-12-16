@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonManager : MonoBehaviour
+public class ButtonAnimation : MonoBehaviour
 {
 
     #region - スケールの最大値

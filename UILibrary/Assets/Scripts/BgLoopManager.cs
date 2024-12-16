@@ -65,6 +65,9 @@ public class BgLoop : MonoBehaviour
         isStop = true;
     }
 
+    /// <summary>
+    /// スクロールを開始する関数
+    /// </summary>
     public void ScrollStart()
     {
         isStop = false;
