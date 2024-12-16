@@ -26,7 +26,7 @@ public class Common
 
     // タップエフェクト関連
     public const int GENERATE_COUNT = 120;   // プレファブ初期生成時の個数
-    public const float GENERATE_POS = 100;  // プレファブ初期生成時の座標
+    public const float GENERATE_POS = 100;   // プレファブ初期生成時の座標
 
     /*
     // 列挙体シリアライズするとインスペクタからリストで選べる
