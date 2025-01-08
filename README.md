@@ -123,8 +123,8 @@
 | ---| ---| ---|
 | ZoomAnimation.cs | アニメーションさせたいPanel等のオブジェクト |  |
 | 画像 | 使用するオブジェクトのImageコンポーネント内 Source Image | 任意 |
-| ZoomAnimation.cs.**ShowZoomIn()** | ズームインアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
-| ZoomAnimation.cs.**ShowZoomOut()** | ズームアウトアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
+| ZoomAnimation.cs.ShowZoomIn() | ズームインアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
+| ZoomAnimation.cs.ShowZoomOut() | ズームアウトアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
 
 ### 使用時の注意点
 1. **maxScale、minScaleについて**
