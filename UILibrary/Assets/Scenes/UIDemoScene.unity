@@ -1705,7 +1705,7 @@ MonoBehaviour:
   flowType: 3
   isReverse: 1
   inStartPos: {x: -1600, y: 0}
-  inStopPos: {x: 0, y: 0}
+  inStopPos: {x: 300, y: 0}
   samples: 2
 --- !u!225 &505525949
 CanvasGroup:

@@ -77,8 +77,8 @@
 | 必要な物 | アタッチ先 | 備考 |
 | ---| ---| ---|
 | Buttonプレファブ | - | **ボタンアニメーションを行う場合は、こちらのButtonプレファブを使用しての開発を推奨します。**<br>Buttonプレファブを使用しない場合は、ButtonAnimation.csを使用するImageやPanelにアタッチし、イベントトリガーの設定を行うことで利用可能です。|
-| ButtonAnimation.cs | Buttonプレファブの親オブジェクト |  |
-| ボタンの画像 | Buttonプレファブの子オブジェクト(Image)の<br>Imageコンポーネント内 Source Image | - |
+| ButtonAnimation.cs | Buttonプレファブの親オブジェクト | - |
+| ボタンの画像 | Buttonプレファブの子オブジェクト(Image)の<br>Imageコンポーネント内 Source Image | 任意 |
 | Event Trigger(**PointerEnter**) | Buttonプレファブの親オブジェクト | Buttonプレファブを使用する場合は、アタッチ済みのため設定は不要です。 <br>**Buttonプレファブを使用しない場合は、Buttonanimation.cs.ReduceSize()を設定してください。**|
 | Event Trigger(**PointerExit**) | Buttonプレファブの親オブジェクト | Buttonプレファブを使用する場合は、アタッチ済みのため設定は不要です。 <br>**Buttonプレファブを使用しない場合は、Buttonanimation.cs.IncreaseSize()を設定してください。**|
 
@@ -102,7 +102,7 @@
 
 
 ## 3. パネルアニメーション ズーム
-- パネル表示・非表示時のアニメーション
+- パネル表示・非表示時のズームイン・アウトアニメーション
 - ソース : **ZoomAnimation.cs**
 #### 主な使用方法
 1. Scripts/**ZoomAnimation.cs**を、アニメーションさせたいパネル等にアタッチ。
@@ -131,16 +131,146 @@
 - 拡大縮小の値は、必ず<br>**maxScale > minScale** になるように設定してください。
 
 ## 4. パネルアニメーション スライド
-aaa
+- パネル表示・非表示時のスライドイン・アウトアニメーション<br>指定した開始座標から指定した停止座標に向けてスライドイン・アウト。
+- ソース : **SlideAnimation.cs**
+#### 主な使用方法
+1. Scripts/**SlideAnimation.cs**を、アニメーションさせたいパネル等にアタッチ。
+2. **SlideAnimation.cs**のアニメーションの速度、スライドの方向、スライドアウトの動き、スライドイン時の開始・停止位置を設定。(インスペクタ上で設定)
+3. スライドインを行うタイミングで、SlideAnimation.cs.SlideIn()を呼び出す。<br>ズームアウトを行うタイミングで、SlideAnimation.cs.SlideOut()を呼び出す。
+
+### インスペクタ上で指定する変数について
+
+| 変数名 | 型 | 用途 | 備考 |
+| ---| ---| ---| --- |
+| flowType | enum | スライドの方向 | UpToBottom : 上から下<br>BottomToUp : 下から上<br>RightToLeft : 右から左<br>LeftToRight : 左から右 |
+| isReverse | bool | スライドアウト方向 | true : 逆方向にスライドアウト(スライドインの開始位置に戻る)<br>false : 一方通行にスライドアウト |
+| inStartPos | Vector2 | スライドイン時の開始位置x,y | - |
+| inStopPos | Vector2 | スライドイン時の停止位置x,y | - |
+| samples | float | アニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
+
+### 使用時に必要な物
+| 必要な物 | アタッチ先 | 備考 |
+| ---| ---| ---|
+| SlideAnimation.cs | アニメーションさせたいPanel等のオブジェクト | - |
+| 画像 | 使用するオブジェクトのImageコンポーネント内 Source Image | 任意 |
+| SlideAnimation.cs.SlideIn() | スライドインアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
+| SlideAnimation.cs.SlideOut() | スライドアウトアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
+
+### 使用時の注意点
+1. **isReverseについて**
+- isReverseは、スライドアウト時の方向を指定するための変数です。<br>true : スライドインと逆方向にスライドアウト(スライドインの開始位置に戻る)<br>false : 一方通行にスライドアウト
+#### trueに設定した場合の動き(スライド方向:右から左の場合)
+![alt text](Slide②.png)
+#### falseに設定した場合の動き(スライド方向:右から左の場合)
+![alt text](Slide①.png)
 
 ## 5. フェードイン・アウト
-aaa
+- 画面切り替え時等のフェードイン・アウト演出
+- ソース : **FadeAnimation.cs**
+- プレファブ : **FadePrefab**
+#### 主な使用方法
+1. Resources/Prefabs/**FadePrefab**をキャンバス上にドラッグアンドドロップ。
+2. FadePrefabにアタッチされている、**FadeAnimation.cs**の透明度の最大値・最小値、アニメーションの速度、フェードタイプ、初めからアニメーションを再生するかを設定。
+3. フェードインを行うタイミングで、FadeAnimation.cs.ShowFadeIn()を呼び出す。<br>フェードアウトを行うタイミングで、FadeAnimation.cs.ShowFadeOut()を呼び出す。
+
+### インスペクタ上で指定する変数について
+
+| 変数名 | 型 | 用途 | 備考 |
+| ---| ---| ---| --- |
+| fadeType | enum | フェードタイプ(フェードインかアウトか) | fadeIn : フェードイン<br>fadeOut : フェードアウト |
+| isShow | bool | 初めからアニメーションを再生するか | true : 初めから再生<br>false : 初めから再生しない |
+| maxAlpha | float | 透明度の最大値(CanvasGroupの透明度) | 0~1.0の値 |
+| minAlpha | float | 透明度の最小値(CanvasGroupの透明度) | 0~1.0の値 |
+| samples | float | アニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
+
+### 使用時に必要な物
+| 必要な物 | アタッチ先 | 備考 |
+| ---| ---| ---|
+| FadePrefab | - | 全画面にフェード演出が欲しい場合は、こちらのプレファブを使用することを推奨します。 |
+| FadeAnimation.cs | アニメーションさせたいPanel等のオブジェクト | - |
+| 画像 | 使用するオブジェクトのImageコンポーネント内 Source Image | 任意 |
+| 色 | 使用するオブジェクトのImageコンポーネント内 Color | 任意 |
+| Canvas Group | アニメーションさせたいPanel等のオブジェクト | FadePrefabを使用する場合は設定不要です。 |
+| FadeAnimation.cs.ShowFadeIn() | フェードインアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
+| FadeAnimation.cs.ShowFadeOut() | フェードアウトアニメーションを行うタイミングで呼び出し | ボタン押下時等に呼び出してください。 |
+
 
 ## 6. 背景のループ
-aaa
+- 指定した背景画像2枚をループ(スクロール)表示
+- ソース : **BgLoopManager.cs**
+#### 主な使用方法
+1. 空のオブジェクトを作成(BgLoopManager等)
+2. 作成した空のオブジェクトにScripts/BgLoopManager.csをアタッチ
+3. 空のオブジェクトにアタッチされている、**BgLoopManager.cs**の1枚目の背景、2枚目の背景、スクロールの方向、アニメーションの速度、初めからスクロールをするかを設定。
+4. スクロールを開始するタイミングで、BgLoopManager.ScrollStart()を呼び出す。スクロールを停止するタイミングで、BgLoopManager.ScrollStop()を呼び出す。
+
+### インスペクタ上で指定する変数について
+
+| 変数名 | 型 | 用途 | 備考 |
+| ---| ---| ---| --- |
+| direction | enum | スクロールの方向 | Up : 上方向<br>Down : 下方向<br>Right : 右方向<br>Left : 左方向 |
+| image1 | GameObject | ループに使用するImage① | カメラに映っている背景画像1枚目 |
+| image2 | GameObject | ループに使用するImage② | カメラ外の背景画像2枚目 |
+| samples | float | アニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
+| isStop | bool | スクロールを停止 | true : 停止する<br>false : スクロール再開 |
+
+### 使用時に必要な物
+| 必要な物 | アタッチ先 | 備考 |
+| ---| ---| ---|
+| BgLoopManager.cs | 空のオブジェクト | - |
+| Image① | BgLoopManager.csのImage1 | カメラに映っている背景画像1枚目を指定してください |
+| Image② | BgLoopManager.csのImage2 | カメラ外の背景画像2枚目を指定してください<br>スクロール方向によって座標が異なるため、[こちら](#例-スクロール方向が-左-の場合)を参照してください。 |
+| 画像 | ループ画像2枚 | 任意 |
+| BgLoopManager.cs.ScrollStop| スクロールを停止するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+| BgLoopManager.cs.ScrollStart| スクロールを再開するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+
+### 使用時の注意点
+1. **Image1、Image2について**
+- 背景のスクロール方向によって、Image2の初期座標が異なります。
+
+### 例) スクロール方向が "左" の場合
+![alt text](Bg①-1.png)
+- Image2のx座標は、画面サイズの横幅分プラスしてください。(1920)
+- 逆に、右方向にスクロールする場合は、画面サイズの横幅分マイナスしてください。(-1920)<br>上・下方向についても、上記の関係になるように配置してください。
 
 ## 7. タップエフェクト・ロングタップエフェクト
-aaa
+- 画面タップ時・長押し時にエフェクトを表示aa
+- ソース : **TapEffect.cs、TapEffectManager.cs**
+#### 主な使用方法
+1. 空のオブジェクトを作成(BgLoopManager等)
+2. 作成した空のオブジェクトにScripts/BgLoopManager.csをアタッチ
+3. 空のオブジェクトにアタッチされている、**BgLoopManager.cs**の1枚目の背景、2枚目の背景、スクロールの方向、アニメーションの速度、初めからスクロールをするかを設定。
+4. スクロールを開始するタイミングで、BgLoopManager.ScrollStart()を呼び出す。スクロールを停止するタイミングで、BgLoopManager.ScrollStop()を呼び出す。
+
+### インスペクタ上で指定する変数について
+
+| 変数名 | 型 | 用途 | 備考 |
+| ---| ---| ---| --- |
+| direction | enum | スクロールの方向 | Up : 上方向<br>Down : 下方向<br>Right : 右方向<br>Left : 左方向 |
+| image1 | GameObject | ループに使用するImage① | カメラに映っている背景画像1枚目 |
+| image2 | GameObject | ループに使用するImage② | カメラ外の背景画像2枚目 |
+| samples | float | アニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
+| isStop | bool | スクロールを停止 | true : 停止する<br>false : スクロール再開 |
+
+### 使用時に必要な物
+| 必要な物 | アタッチ先 | 備考 |
+| ---| ---| ---|
+| BgLoopManager.cs | 空のオブジェクト | - |
+| Image① | BgLoopManager.csのImage1 | カメラに映っている背景画像1枚目を指定してください |
+| Image② | BgLoopManager.csのImage2 | カメラ外の背景画像2枚目を指定してください<br>スクロール方向によって座標が異なるため、[こちら](#例-スクロール方向が-左-の場合)を参照してください。 |
+| 画像 | ループ画像2枚 | 任意 |
+| BgLoopManager.cs.ScrollStop| スクロールを停止するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+| BgLoopManager.cs.ScrollStart| スクロールを再開するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+
+### 使用時の注意点
+1. **Image1、Image2について**
+- 背景のスクロール方向によって、Image2の初期座標が異なります。
+
+### 例) スクロール方向が "左" の場合
+![alt text](Bg①-1.png)
+- Image2のx座標は、画面サイズの横幅分プラスしてください。(1920)
+- 逆に、右方向にスクロールする場合は、画面サイズの横幅分マイナスしてください。(-1920)<br>上・下方向についても、上記の関係になるように配置してください。
+
 
 ## 8. テキストのアウトライン
 aaa
