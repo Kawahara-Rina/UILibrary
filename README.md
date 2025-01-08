@@ -84,7 +84,7 @@
 
 ### 使用時の注意点
 1. **Buttonプレファブの構造について**<br>
-- 拡大縮小時のちらつきを防ぐため、Buttonプレファブは親子構造になっています。
+- 拡大縮小時のちらつきを防ぐため、Buttonプレファブは親子構造になっています。<br>
   ![alt text](Button①.png)
 
   ※ 親でButtonAnimation.csや、イベントトリガーの設定を行います。<br>
@@ -93,7 +93,7 @@
 
 2. **サイズ設定について**
 - ボタンのサイズを変更したい場合はscaleではなくWidthとHeightで調整してください。<br>(Scaleは固定)
-- 親と子のWidthとHeightの値は必ず一致させてください。
+- 親と子のWidthとHeightの値は必ず一致させてください。<br>
 ![alt text](Button②.png)
 <br>
 
@@ -107,7 +107,7 @@
 #### 主な使用方法
 1. Scripts/**ZoomAnimation.cs**を、アニメーションさせたいパネル等にアタッチ。
 2. **ZoomAnimation.cs**のスケールの最大値・最小値、アニメーションの速度、ズームのタイプ、初めからアニメーションを行うかを設定。(インスペクタ上で設定)
-3. ズームインを行うタイミングで、**ZoomAnimation.cs.ShowZoomIn()**を呼び出す。<br>ズームアウトを行うタイミングで、**ZoomAnimation.cs.ShowZoomOut()**を呼び出す。
+3. ズームインを行うタイミングで、ZoomAnimation.cs.ShowZoomIn()を呼び出す。<br>ズームアウトを行うタイミングで、ZoomAnimation.cs.ShowZoomOut()を呼び出す。
 
 ### インスペクタ上で指定する変数について
 
