@@ -234,20 +234,22 @@
 - 逆に、右方向にスクロールする場合は、画面サイズの横幅分マイナスしてください。(-1920)<br>上・下方向についても、上記の関係になるように配置してください。
 
 ## 7. タップエフェクト・ロングタップエフェクト
-- 画面タップ時・長押し時にエフェクトを表示aa
+- 画面タップ時・長押し時にエフェクトを表示
 - ソース : **TapEffect.cs、TapEffectManager.cs**
+- プレファブ : **TapEffectPrefab**
+
 #### 主な使用方法
-1. 空のオブジェクトを作成(BgLoopManager等)
-2. 作成した空のオブジェクトにScripts/BgLoopManager.csをアタッチ
-3. 空のオブジェクトにアタッチされている、**BgLoopManager.cs**の1枚目の背景、2枚目の背景、スクロールの方向、アニメーションの速度、初めからスクロールをするかを設定。
-4. スクロールを開始するタイミングで、BgLoopManager.ScrollStart()を呼び出す。スクロールを停止するタイミングで、BgLoopManager.ScrollStop()を呼び出す。
+1. 空のオブジェクトを作成(TapEffectManager等)
+2. 作成した空のオブジェクトにScripts/TapEffectManager.csをアタッチ
+3. 空のオブジェクトにアタッチされている、**TapEffectManager.cs**のエフェクトを表示するキャンバス、タップエフェクトに使用する画像とアニメーションの速度、ロングタップエフェクトに使用する画像とアニメーションの速度・エフェクト生成速度を設定。
 
 ### インスペクタ上で指定する変数について
 
 | 変数名 | 型 | 用途 | 備考 |
 | ---| ---| ---| --- |
-| direction | enum | スクロールの方向 | Up : 上方向<br>Down : 下方向<br>Right : 右方向<br>Left : 左方向 |
-| image1 | GameObject | ループに使用するImage① | カメラに映っている背景画像1枚目 |
+| canvas | Canvas | エフェクトを表示するキャンバス | - |
+| tapEffectSprites | Sprite[] | タップエフェクトにアニメーションに使用する画像 | 3~5枚以上を推奨 |
+| tapEffectSamples | float | タップエフェクトのアニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
 | image2 | GameObject | ループに使用するImage② | カメラ外の背景画像2枚目 |
 | samples | float | アニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
 | isStop | bool | スクロールを停止 | true : 停止する<br>false : スクロール再開 |

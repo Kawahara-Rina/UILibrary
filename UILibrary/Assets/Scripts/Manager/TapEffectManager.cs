@@ -77,7 +77,7 @@ public class TapEffectManager : MonoBehaviour
         // TODO パス指定
         // パッケージ内のタップエフェクトプレファブを取得
         tapEffectPrefab =Resources.Load<GameObject>
-            ("Prefabs/TapEffect");
+            ("Prefabs/TapEffectPrefab");
 
         // キャンバスのレクトトランスフォーム取得
         canvasRect = canvas.GetComponent<RectTransform>();

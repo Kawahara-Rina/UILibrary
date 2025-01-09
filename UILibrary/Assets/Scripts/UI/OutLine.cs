@@ -7,8 +7,17 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class OutLine : BaseMeshEffect
 {
-    public Color outlineColor = Color.black; // アウトラインの色
-    public float outlineWidth = 1f;         // アウトラインの幅
+    #region - アウトラインの色
+    [Header("アウトラインの色")]
+    #endregion
+    [SerializeField] Color color = Color.white;
+
+    #region - アウトラインの太さ
+    [Header("アウトラインの太さ")]
+    [Tooltip("0,0～10.0の値。0が細い、10が太い。")]
+    [Range(Common.MIN_THICKNESS, Common.MAX_THICKNESS)]
+    #endregion
+    [SerializeField] float thickness = 3.0f; 
 
     public override void ModifyMesh(VertexHelper vh)
     {
@@ -35,8 +44,8 @@ public class OutLine : BaseMeshEffect
             for (int i = 0; i < originalVertexCount; i++)
             {
                 UIVertex vertex = originalVertices[i];
-                vertex.position += new Vector3(dir.x * outlineWidth, dir.y * outlineWidth);
-                vertex.color = outlineColor;
+                vertex.position += new Vector3(dir.x * thickness, dir.y * thickness);
+                vertex.color = color;
                 modifiedVertices.Add(vertex);
             }
         }

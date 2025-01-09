@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7315449510006794019}
   - component: {fileID: 4970697392652963907}
   m_Layer: 5
-  m_Name: TapEffect
+  m_Name: TapEffectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

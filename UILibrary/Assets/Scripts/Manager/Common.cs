@@ -20,6 +20,10 @@ public class Common
     public const float MAX_ALPHA = 1.0f;
     public const float MIN_ALPHA = 0.0f;
 
+    // 線の太さの最大値・最小値
+    public const float MAX_THICKNESS = 10.0f;
+    public const float MIN_THICKNESS = 0.1f;
+
     // 再生速度の最大値・最小値
     public const float MAX_SAMPLES = 4.0f;
     public const float MIN_SAMPLES = 0.1f;
@@ -27,6 +31,44 @@ public class Common
     // タップエフェクト関連
     public const int GENERATE_COUNT = 120;   // プレファブ初期生成時の個数
     public const float GENERATE_POS = 100;   // プレファブ初期生成時の座標
+
+    // 小数点以下の桁数指定用
+    public enum DecimalPlace
+    {
+        None,
+        First,
+        Second
+    };
+
+    /// <summary>
+    /// 小数点位置を返す関数
+    /// </summary>
+    /// <returns></returns>
+    public static string SetDecimalPlace(DecimalPlace _place)
+    {
+        var format = "";
+
+        // 小数点位置指定
+        switch (_place)
+        {
+            // 小数点なし
+            case DecimalPlace.None:
+                format = "F0";
+                break;
+
+            // 小数点第1位まで表示
+            case DecimalPlace.First:
+                format = "F1";
+                break;
+
+            // 小数点第2位まで表示
+            case DecimalPlace.Second:
+                format = "F2";
+                break;
+        }
+
+        return format;
+    }
 
     /*
     // 列挙体シリアライズするとインスペクタからリストで選べる
