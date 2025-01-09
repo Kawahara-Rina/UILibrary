@@ -4377,7 +4377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30E9\u30A4\u30C9\u30A4\u30F3"
+  m_Text: "\u30BF\u30A4\u30DE\u30FC\u505C\u6B62"
 --- !u!222 &1100148777
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5470,7 +5470,7 @@ GameObject:
   - component: {fileID: 1504361734}
   - component: {fileID: 1504361733}
   m_Layer: 5
-  m_Name: SlideInButton
+  m_Name: TimerStopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5600,9 +5600,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 505525948}
-        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
-        m_MethodName: SlideIn
+      - m_Target: {fileID: 1549804349}
+        m_TargetAssemblyTypeName: TimerManager, Assembly-CSharp
+        m_MethodName: CountStop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5720,7 +5720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30E9\u30A4\u30C9\u30A2\u30A6\u30C8"
+  m_Text: "\u30BF\u30A4\u30DE\u30FC\u958B\u59CB"
 --- !u!222 &1511464712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7339,7 +7339,7 @@ GameObject:
   - component: {fileID: 1967474279}
   - component: {fileID: 1967474278}
   m_Layer: 5
-  m_Name: SlideOutButton
+  m_Name: TimerStartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7469,9 +7469,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 505525948}
-        m_TargetAssemblyTypeName: SlideAnimation, Assembly-CSharp
-        m_MethodName: SlideOut
+      - m_Target: {fileID: 1549804349}
+        m_TargetAssemblyTypeName: TimerManager, Assembly-CSharp
+        m_MethodName: CountStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

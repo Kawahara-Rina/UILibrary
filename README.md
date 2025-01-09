@@ -12,6 +12,8 @@
   6. [背景のループ](#6-背景のループ)
   7. [タップエフェクト・ロングタップエフェクト](#7-タップエフェクト・ロングタップエフェクト)
   8. [テキストのアウトライン](#8-テキストのアウトライン)
+  9. [スコア表示](#9-スコア表示)
+  10. [タイマー表示](#10-タイマー表示)
 
 <br>
 
@@ -249,34 +251,83 @@
 | ---| ---| ---| --- |
 | canvas | Canvas | エフェクトを表示するキャンバス | - |
 | tapEffectSprites | Sprite[] | タップエフェクトにアニメーションに使用する画像 | 3~5枚以上を推奨 |
-| tapEffectSamples | float | タップエフェクトのアニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
-| image2 | GameObject | ループに使用するImage② | カメラ外の背景画像2枚目 |
-| samples | float | アニメーションの速度 | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
-| isStop | bool | スクロールを停止 | true : 停止する<br>false : スクロール再開 |
+| tapEffectSamples | float | タップエフェクトのアニメーションの速度 | 0.1~4.0の値<br4.0が遅い、0.1が速い |
+| longTapEffectSprites | Sprite[] | ロングタップエフェクトにアニメーションに使用する画像 | 3~5枚以上を推奨 |
+| longTapEffectSamples | float | ロングタップエフェクトのアニメーションの速度 | 0.1~4.0の値<br>4.0が遅い、0.1が速い |
+| generateSamples | float | ロングタップエフェクトの生成間隔 | 0.1~4.0の値<br>4.0が遅い、0.1が速い |
 
 ### 使用時に必要な物
 | 必要な物 | アタッチ先 | 備考 |
 | ---| ---| ---|
-| BgLoopManager.cs | 空のオブジェクト | - |
-| Image① | BgLoopManager.csのImage1 | カメラに映っている背景画像1枚目を指定してください |
-| Image② | BgLoopManager.csのImage2 | カメラ外の背景画像2枚目を指定してください<br>スクロール方向によって座標が異なるため、[こちら](#例-スクロール方向が-左-の場合)を参照してください。 |
-| 画像 | ループ画像2枚 | 任意 |
-| BgLoopManager.cs.ScrollStop| スクロールを停止するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
-| BgLoopManager.cs.ScrollStart| スクロールを再開するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
-
-### 使用時の注意点
-1. **Image1、Image2について**
-- 背景のスクロール方向によって、Image2の初期座標が異なります。
-
-### 例) スクロール方向が "左" の場合
-![alt text](Bg①-1.png)
-- Image2のx座標は、画面サイズの横幅分プラスしてください。(1920)
-- 逆に、右方向にスクロールする場合は、画面サイズの横幅分マイナスしてください。(-1920)<br>上・下方向についても、上記の関係になるように配置してください。
-
+| TapEffectManager.cs | 空のオブジェクト | - |
+| エフェクトを表示するCanvas | TapEffectManager.csの canvas | - |
+| タップエフェクト用画像 | TapEffectManager.csの tapEffectSprits | アニメーション用の素材3~5枚以上を推奨。<br>枚数を指定して、配列の中に格納してください。 |
+| ロングタップエフェクト用画像 | TapEffectManager.csの longTapEffectSprits | アニメーション用の素材3~5枚以上を推奨。<br>枚数を指定して、配列の中に格納してください。 |
 
 ## 8. テキストのアウトライン
 aaa
 
+## 9. スコア表示
+- スコアを表示し、加算・減算処理を行う
+- ソース : **ScoreManager.cs**
+#### 主な使用方法
+1. 空のオブジェクトを作成(ScoreManager等)
+2. 作成した空のオブジェクトにScripts/ScoreManager.csをアタッチ
+3. 空のオブジェクトにアタッチされている、**ScoreManager.cs**の使用するテキスト、スコアの初期値・上限値・下限値、1回ごとのスコアの加算・減算量、小数点表示を設定。
+4. スコアを加算するタイミングで、ScoreManager.CountUpScore()を呼び出す。スコアを減算するタイミングで、ScoreManager.CountDownScore()を呼び出す。<br>スコアの値を使用する場合は、ScoreManager.GetScore()で取得。
 
+### インスペクタ上で指定する変数について
 
+| 変数名 | 型 | 用途 | 備考 |
+| ---| ---| ---| --- |
+| text | Text | スコアを表示 | - |
+| score | float | スコアの初期値 | - |
+| maxScore | float | スコアの上限値 | - |
+| minScore | float | スコアの下限値 | - |
+| addScore | float | 1回ごとのスコアへの加算量 | - |
+| subScore | float | 1回ごとのスコアへの減算量 | - |
+| decimalPlace | enum | 小数点位置の指定 | None : 小数点以下の表示なし<br>First : 少数第1位まで表示<br>Second : 少数第2位まで表示 |
+
+### 使用時に必要な物
+| 必要な物 | アタッチ先 | 備考 |
+| ---| ---| ---|
+| ScoreManager.cs | 空のオブジェクト | - |
+| スコアを表示するText | ScoreManager.csのtext | - |
+| ScoreManager.cs.CountUpScore| スコアを加算するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+| ScoreManager.cs.CountDownScore| スコアを減算するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+| ScoreManager.cs.GetScore | スコアを取得し、使用する場合に呼び出し | 任意のタイミングで呼び出してください。 |
+
+### 使用時の注意点
+1. **maxScore,minScoreについて**
+- スコアの最大値・最小値の値は、必ず<br>**maxScore > minScore** になるように設定してください。
+
+## 10. タイマー表示
+- タイマーを表示し、カウントアップ・ダウン処理を行う
+- ソース : **TimerManager.cs**
+#### 主な使用方法
+1. 空のオブジェクトを作成(TimerManager等)
+2. 作成した空のオブジェクトにScripts/TimerManager.csをアタッチ
+3. 空のオブジェクトにアタッチされている、**TimerManager.cs**の使用するテキスト、タイマーの初期値・停止値、1秒ごとのタイマーへの加算量、カウントの種類、タイマーを停止するか、小数点表示を設定。
+4. タイマーを開始するタイミングで、TimerManager.CountStart()を呼び出す。タイマーを停止するタイミングで、TimerManager.CountStop()を呼び出す。<br>タイマーの値を使用する場合は、TimerManager.GetTimer()で取得。
+
+### インスペクタ上で指定する変数について
+
+| 変数名 | 型 | 用途 | 備考 |
+| ---| ---| ---| --- |
+| text | Text | タイマーを表示 | - |
+| timer | float | タイマーの初期値 | - |
+| stopTime | float | タイマーの停止値 | - |
+| addTime | float | 1秒ごとのタイマーへの加算量 | - |
+| isCountUp | bool | カウントの種類 | - |
+| isStop | bool | タイマーの停止・開始 | - |
+| decimalPlace | enum | 小数点位置の指定 | None : 小数点以下の表示なし<br>First : 少数第1位まで表示<br>Second : 少数第2位まで表示 |
+
+### 使用時に必要な物
+| 必要な物 | アタッチ先 | 備考 |
+| ---| ---| ---|
+| TimerManager.cs | 空のオブジェクト | - |
+| タイマーを表示するText | TimerManager.csのtext | - |
+| TimerManager.cs.CountStart| タイマーを開始するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+| TimerManager.cs.CountStop| タイマーを停止するタイミングで呼び出し | 任意のタイミングで呼び出してください。 |
+| TimerManager.cs.GetTimer | タイマーを取得し、使用する場合に呼び出し | 任意のタイミングで呼び出してください。 |
 

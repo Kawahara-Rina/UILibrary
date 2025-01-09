@@ -63,7 +63,7 @@ public class TimerManager : MonoBehaviour
     {
         if (timer < stopTime)
         {
-            timer += addTime * Time.deltaTime;
+            timer += Mathf.Abs(addTime) * Time.deltaTime;
         }
         else
         {
@@ -78,7 +78,7 @@ public class TimerManager : MonoBehaviour
     {
         if (timer > stopTime)
         {
-            timer -= addTime * Time.deltaTime;
+            timer -= Mathf.Abs(addTime) * Time.deltaTime;
         }
         else
         {
