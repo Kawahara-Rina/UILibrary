@@ -80,12 +80,13 @@
 2. ButtonPrefabにアタッチされている、**ButtonAnimation.cs**のスケールの最大値・最小値、アニメーションの速度を設定して使用。(インスペクタ上で設定)
 
 ### インスペクタ上で指定する変数について
+![alt text](Button③.png) 　![alt text](Button④.png)
 
 | 変数名    | 型    | 用途                         | 備考                              |
 | ---      | ---   | ---                          | ---                               |
-| <font color="Red">① </font>maxScale | float | スケールの最大値(拡大時)を指定 | 0~1.0の値                          |
-| <font color="Red">② </font>minScale | float | スケールの最小値(縮小時)を指定 | 0~1.0の値                          |
-| <font color="Red">③ </font>samples  | float | アニメーションの速度を指定　   | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
+| ① maxScale | float | スケールの最大値(拡大時)を指定 | 0~1.0の値                          |
+| ② minScale | float | スケールの最小値(縮小時)を指定 | 0~1.0の値                          |
+| ③ samples  | float | アニメーションの速度を指定　   | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
 
 ### 使用時に必要な物
 | 必要な物 | アタッチ先 | 備考 |
