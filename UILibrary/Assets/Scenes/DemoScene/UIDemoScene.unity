@@ -5812,7 +5812,7 @@ MonoBehaviour:
   addTime: 1
   isCountUp: 1
   isStop: 1
-  decimalPlace: 1
+  decimalPlace: 2
 --- !u!1 &1565249324
 GameObject:
   m_ObjectHideFlags: 0
