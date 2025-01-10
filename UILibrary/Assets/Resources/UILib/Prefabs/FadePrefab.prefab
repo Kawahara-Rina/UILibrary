@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeType: 0
-  isShow: 1
+  isShow: 0
   maxAlpha: 1
   minAlpha: 0
   samples: 0.5

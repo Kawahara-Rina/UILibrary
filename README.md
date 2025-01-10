@@ -70,7 +70,6 @@
 <br>
 
 # 各パッケージ使用方法
-
 ## 1. ボタンアニメーション
 - カーソルを合わせた時に縮小・離れた時に拡大するアニメーション
 - ソース : **ButtonAnimation.cs** (Scripts/UILib/Animation/ButtonAnimation.cs)
@@ -84,9 +83,9 @@
 
 | 変数名    | 型    | 用途                         | 備考                              |
 | ---      | ---   | ---                          | ---                               |
-| maxScale | float | スケールの最大値(拡大時)を指定 | 0~1.0の値                          |
-| minScale | float | スケールの最小値(縮小時)を指定 | 0~1.0の値                          |
-| samples  | float | アニメーションの速度を指定　   | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
+| <font color="Red">① </font>maxScale | float | スケールの最大値(拡大時)を指定 | 0~1.0の値                          |
+| <font color="Red">② </font>minScale | float | スケールの最小値(縮小時)を指定 | 0~1.0の値                          |
+| <font color="Red">③ </font>samples  | float | アニメーションの速度を指定　   | 0.1~4.0の値<br>0.1が遅い、4.0が速い |
 
 ### 使用時に必要な物
 | 必要な物 | アタッチ先 | 備考 |
