@@ -53,6 +53,7 @@
   - Resources
     - UILib 
       - Images
+        - TapEffect
       - Prefabs (<font color="Red">①</font>)
   - Scripts
     - UILib
