@@ -17,7 +17,6 @@ public class TextTest : MonoBehaviour
     [SerializeField] private Text testText;  // 「Hellow World」を表示するテキスト 
 
     // 「Hellow World」を表示する関数
-    // TODO Commonに移行
     /// <summary>
     /// テキストを表示する関数
     /// </summary>

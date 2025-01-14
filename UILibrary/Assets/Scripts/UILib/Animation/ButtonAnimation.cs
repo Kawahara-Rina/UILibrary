@@ -44,8 +44,6 @@ public class ButtonAnimation : MonoBehaviour
     /// <param name="_scale">もとにするスケール</param>
     private void SetScale(float _scale)
     {
-        // TODO アニメーションのブラッシュアップ
-
         // ボタンにカーソルが重なっている時
         if (isPointerEnter)
         {
