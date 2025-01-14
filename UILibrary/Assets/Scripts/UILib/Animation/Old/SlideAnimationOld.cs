@@ -1,5 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+    SlideAnimationOld.cs
+
+    スライドイン・アウトクラス(古いバージョン)
+*/
 using UnityEngine;
 
 public class SlideAnimationOld : MonoBehaviour

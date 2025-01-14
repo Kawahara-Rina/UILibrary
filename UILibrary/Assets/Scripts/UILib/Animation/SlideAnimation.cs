@@ -1,5 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+    SlideAnimation.cs
+
+    スライドイン・アウトアニメーションクラス
+*/
 using UnityEngine;
 using System;
 

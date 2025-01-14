@@ -129,12 +129,13 @@
    ズームアウトを行うタイミングで、ZoomAnimation.cs.ShowZoomOut()を呼び出す。
 
 ### インスペクタ上で指定する変数について
+![alt text](Zoom①.png)　![alt text](Zoom②.png)
 | 変数名    | 型    | 用途                            | 備考                                         |
 | ---      | ---   | ---                             | ---                                          |
-| zoomType | enum  | ズームタイプ(ズームインかアウトか) | ZoomIn : ズームイン<br>ZoomOut : ズームアウト  |
-| maxScale | float | スケールの最大値(拡大時)          | 0~1.0の値                                    |
-| minScale | float | スケールの最小値(縮小時)          | 0~1.0の値                                    |
-| samples  | float | アニメーションの速度              | 0.1~4.0の値<br>0.1が遅い、4.0が速い           |
+| ①zoomType | enum  | ズームタイプ(ズームインかアウトか) | ZoomIn : ズームイン<br>ZoomOut : ズームアウト  |
+| ②maxScale | float | スケールの最大値(拡大時)          | 0~1.0の値                                    |
+| ③minScale | float | スケールの最小値(縮小時)          | 0~1.0の値                                    |
+| ④samples  | float | アニメーションの速度              | 0.1~4.0の値<br>0.1が遅い、4.0が速い           |
 
 ### 使用時に必要な物
 | 必要な物                        | アタッチ先                                             | 備考                              |
@@ -161,13 +162,14 @@
    ズームアウトを行うタイミングで、SlideAnimation.cs.SlideOut()を呼び出す。
 
 ### インスペクタ上で指定する変数について
-| 変数名      | 型      | 用途                      | 備考                                                                                            |
-| ---        | ---     | ---                       | ---                                                                                             |
-| flowType   | enum    | スライドの方向             | UpToBottom : 上から下<br>BottomToUp : 下から上<br>RightToLeft : 右から左<br>LeftToRight : 左から右 |
-| isReverse  | bool    | スライドアウト方向          | true : 逆方向にスライドアウト(スライドインの開始位置に戻る)<br>false : 一方通行にスライドアウト       |
-| inStartPos | Vector2 | スライドイン時の開始位置x,y | -                                                                                               |
-| inStopPos  | Vector2 | スライドイン時の停止位置x,y | -                                                                                               |
-| samples    | float   | アニメーションの速度        | 0.1~4.0の値<br>0.1が遅い、4.0が速い                                                              |
+![alt text](Slide④.png)　![alt text](Slide③.png)
+| 変数名       | 型      | 用途                      | 備考                                                                                            |
+| ---         | ---     | ---                       | ---                                                                                             |
+| ①flowType   | enum    | スライドの方向             | UpToBottom : 上から下<br>BottomToUp : 下から上<br>RightToLeft : 右から左<br>LeftToRight : 左から右 |
+| ②isReverse  | bool    | スライドアウト方向         | true : 逆方向にスライドアウト(スライドインの開始位置に戻る)<br>false : 一方通行にスライドアウト        |
+| ③inStartPos | Vector2 | スライドイン時の開始位置x,y | -                                                                                               |
+| ④inStopPos  | Vector2 | スライドイン時の停止位置x,y | -                                                                                               |
+| ⑤samples    | float   | アニメーションの速度        | 0.1~4.0の値<br>0.1が遅い、4.0が速い                                                              |
 
 ### 使用時に必要な物
 | 必要な物                      | アタッチ先                                             | 備考                              |
@@ -200,13 +202,14 @@
    <br>フェードアウトを行うタイミングで、FadeAnimation.cs.ShowFadeOut()を呼び出す。
 
 ### インスペクタ上で指定する変数について
-| 変数名    | 型    | 用途                                | 備考                                            |
-| ---      | ---   | ---                                 | ---                                             |
-| fadeType | enum  | フェードタイプ(フェードインかアウトか) | fadeIn : フェードイン<br>fadeOut : フェードアウト |
-| isShow   | bool  | 初めからアニメーションを再生するか     | true : 初めから再生<br>false : 初めから再生しない |
-| maxAlpha | float | 透明度の最大値(CanvasGroupの透明度)   | 0~1.0の値                                       |
-| minAlpha | float | 透明度の最小値(CanvasGroupの透明度)   | 0~1.0の値                                       |
-| samples  | float | アニメーションの速度                  | 0.1~4.0の値<br>0.1が遅い、4.0が速い              |
+![alt text](Fade①.png)　![alt text](Fade②.png)
+| 変数名     | 型    | 用途                                | 備考                                            |
+| ---       | ---   | ---                                 | ---                                             |
+| ①fadeType | enum  | フェードタイプ(フェードインかアウトか) | fadeIn : フェードイン<br>fadeOut : フェードアウト |
+| ②isShow   | bool  | 初めからアニメーションを再生するか     | true : 初めから再生<br>false : 初めから再生しない |
+| ③maxAlpha | float | 透明度の最大値(CanvasGroupの透明度)   | 0.1~1.0の値<br>0.1が透明度高、1.0が不透明         |
+| ④minAlpha | float | 透明度の最小値(CanvasGroupの透明度)   | 0~1.0の値<br>0が透明、1.0が不透明                |
+| ⑤samples  | float | アニメーションの速度                  | 0.1~4.0の値<br>0.1が遅い、4.0が速い              |
 
 ### 使用時に必要な物
 | 必要な物                        | アタッチ先                                            | 備考                                                                         |
@@ -231,13 +234,14 @@
 4. スクロールを開始するタイミングで、BgLoopManager.ScrollStart()を呼び出す。スクロールを停止するタイミングで、BgLoopManager.ScrollStop()を呼び出す。
 
 ### インスペクタ上で指定する変数について
-| 変数名     | 型         | 用途                  | 備考                                                          |
-| ---       | ---        | ---                   | ---                                                           |
-| direction | enum       | スクロールの方向       | Up : 上方向<br>Down : 下方向<br>Right : 右方向<br>Left : 左方向 |
-| image1    | GameObject | ループに使用するImage① | カメラに映っている背景画像1枚目                                  |
-| image2    | GameObject | ループに使用するImage② | カメラ外の背景画像2枚目                                         |
-| samples   | float      | アニメーションの速度    | 0.1~4.0の値<br>0.1が遅い、4.0が速い                            |
-| isStop    | bool       | スクロールを停止       | true : 停止する<br>false : スクロール再開                       |
+![alt text](Bg②.png)
+| 変数名      | 型         | 用途                  | 備考                                                          |
+| ---        | ---        | ---                   | ---                                                           |
+| ①direction | enum       | スクロールの方向       | Up : 上方向<br>Down : 下方向<br>Right : 右方向<br>Left : 左方向 |
+| ②image1    | GameObject | ループに使用するImage① | カメラに映っている背景画像1枚目                                  |
+| ③image2    | GameObject | ループに使用するImage② | カメラ外の背景画像2枚目                                         |
+| ④samples   | float      | アニメーションの速度    | 0.1~4.0の値<br>0.1が遅い、4.0が速い                            |
+| ⑤isStop    | bool       | スクロールを停止       | true : 停止する<br>false : スクロール再開                       |
 
 ### 使用時に必要な物
 | 必要な物                     | アタッチ先                            | 備考                                                                                                                                   |
@@ -270,14 +274,16 @@
 3. 空のオブジェクトにアタッチされている、**TapEffectManager.cs**のエフェクトを表示するキャンバス、タップエフェクトに使用する画像とアニメーションの速度、ロングタップエフェクトに使用する画像とアニメーションの速度・エフェクト生成速度を設定。
 
 ### インスペクタ上で指定する変数について
-| 変数名                | 型       | 用途                                            | 備考                              |
-| ---                  | ---      | ---                                             | ---                               |
-| canvas               | Canvas   | エフェクトを表示するキャンバス                     | -                                 |
-| tapEffectSprites     | Sprite[] | タップエフェクトにアニメーションに使用する画像      | 3~5枚以上を推奨                    |
-| tapEffectSamples     | float    | タップエフェクトのアニメーションの速度             | 0.1~4.0の値<br4.0が遅い、0.1が速い  |
-| longTapEffectSprites | Sprite[] | ロングタップエフェクトにアニメーションに使用する画像 | 3~5枚以上を推奨                    |
-| longTapEffectSamples | float    | ロングタップエフェクトのアニメーションの速度        | 0.1~4.0の値<br>4.0が遅い、0.1が速い |
-| generateSamples      | float    | ロングタップエフェクトの生成間隔                   | 0.1~4.0の値<br>4.0が遅い、0.1が速い |
+![alt text](Tap①.png)
+![alt text](Tap②.png)
+| 変数名                 | 型       | 用途                                            | 備考                              |
+| ---                   | ---      | ---                                             | ---                               |
+| ①canvas               | Canvas   | エフェクトを表示するキャンバス                     | -                                 |
+| ②tapEffectSprites     | Sprite[] | タップエフェクトにアニメーションに使用する画像      | 3~5枚以上を推奨                    |
+| ③tapEffectSamples     | float    | タップエフェクトのアニメーションの速度             | 0.1~4.0の値<br4.0が遅い、0.1が速い  |
+| ④longTapEffectSprites | Sprite[] | ロングタップエフェクトにアニメーションに使用する画像 | 3~5枚以上を推奨                    |
+| ⑤longTapEffectSamples | float    | ロングタップエフェクトのアニメーションの速度        | 0.1~4.0の値<br>4.0が遅い、0.1が速い |
+| ⑥generateSamples      | float    | ロングタップエフェクトの生成間隔                   | 0.1~4.0の値<br>4.0が遅い、0.1が速い |
 
 ### 使用時に必要な物
 | 必要な物                   | アタッチ先                                 | 備考                                                                             |
@@ -297,10 +303,11 @@
 3. (任意で**OutLine.cs**を重ね付けすることで、より滑らかなアウトラインを生成できます。)
 
 ### インスペクタ上で指定する変数について
-| 変数名     | 型    | 用途                   | 備考                                  |
-| ---       | ---   | ---                    | ---                                  |
-| thickness | float | アウトラインの太さを指定 | 0.1～10.0の値<br>0.1が細い、10.0が太い |
-| color     | Color | アウトラインの色を指定   | -                                    |
+![alt text](OutLine①.png)　![alt text](OutLine②.png)
+| 変数名      | 型    | 用途                   | 備考                                  |
+| ---        | ---   | ---                    | ---                                  |
+| ①thickness | float | アウトラインの太さを指定 | 0.1～10.0の値<br>0.1が細い、10.0が太い |
+| ②color     | Color | アウトラインの色を指定   | -                                    |
 
 ### 使用時に必要な物
 | 必要な物                | アタッチ先              | 備考 |
@@ -321,15 +328,15 @@
 
 ### インスペクタ上で指定する変数について
 
-| 変数名        | 型    | 用途                    | 備考                                                                              |
-| ---          | ---   | ---                     | ---                                                                               |
-| text         | Text  | スコアを表示             | -                                                                                 |
-| score        | float | スコアの初期値           | -                                                                                 |
-| maxScore     | float | スコアの上限値           | -                                                                                 |
-| minScore     | float | スコアの下限値           | -                                                                                 |
-| addScore     | float | 1回ごとのスコアへの加算量 | -                                                                                 |
-| subScore     | float | 1回ごとのスコアへの減算量 | -                                                                                 |
-| decimalPlace | enum  | 小数点位置の指定         | None : 小数点以下の表示なし<br>First : 少数第1位まで表示<br>Second : 少数第2位まで表示 |
+| 変数名         | 型    | 用途                    | 備考                                                                              |
+| ---           | ---   | ---                     | ---                                                                               |
+| ①text         | Text  | スコアを表示             | -                                                                                 |
+| ②score        | float | スコアの初期値           | -                                                                                 |
+| ③maxScore     | float | スコアの上限値           | -                                                                                 |
+| ④minScore     | float | スコアの下限値           | -                                                                                 |
+| ⑤addScore     | float | 1回ごとのスコアへの加算量 | -                                                                                 |
+| ⑥subScore     | float | 1回ごとのスコアへの減算量 | -                                                                                 |
+| ⑦decimalPlace | enum  | 小数点位置の指定         | None : 小数点以下の表示なし<br>First : 少数第1位まで表示<br>Second : 少数第2位まで表示 |
 
 ### 使用時に必要な物
 | 必要な物                        | アタッチ先                          | 備考                                 |
@@ -356,15 +363,17 @@
 4. タイマーを開始するタイミングで、TimerManager.CountStart()を呼び出す。タイマーを停止するタイミングで、TimerManager.CountStop()を呼び出す。<br>タイマーの値を使用する場合は、TimerManager.GetTimer()で取得。
 
 ### インスペクタ上で指定する変数について
-| 変数名        | 型    | 用途                      | 備考                                                                              |
-| ---          | ---   | ---                       | ---                                                                               |
-| text         | Text  | タイマーを表示             | -                                                                                 |
-| timer        | float | タイマーの初期値           | -                                                                                 |
-| stopTime     | float | タイマーの停止値           | -                                                                                 |
-| addTime      | float | 1秒ごとのタイマーへの加算量 | -                                                                                 |
-| isCountUp    | bool  | カウントの種類             | -                                                                                 |
-| isStop       | bool  | タイマーの停止・開始       | -                                                                                  |
-| decimalPlace | enum  | 小数点位置の指定           | None : 小数点以下の表示なし<br>First : 少数第1位まで表示<br>Second : 少数第2位まで表示 |
+![alt text](Timer①.png)
+![alt text](Timer②.png)
+| 変数名         | 型    | 用途                      | 備考                                                                              |
+| ---           | ---   | ---                       | ---                                                                               |
+| ①text         | Text  | タイマーを表示             | -                                                                                 |
+| ②timer        | float | タイマーの初期値           | -                                                                                 |
+| ③stopTime     | float | タイマーの停止値           | -                                                                                 |
+| ④addTime      | float | 1秒ごとのタイマーへの加算量 | -                                                                                 |
+| ⑤isCountUp    | bool  | カウントの種類             | -                                                                                 |
+| ⑥isStop       | bool  | タイマーの停止・開始       | -                                                                                  |
+| ⑦decimalPlace | enum  | 小数点位置の指定           | None : 小数点以下の表示なし<br>First : 少数第1位まで表示<br>Second : 少数第2位まで表示 |
 
 ### 使用時に必要な物
 | 必要な物                   | アタッチ先                            | 備考                                |

@@ -1,11 +1,8 @@
 /*
     Common.cs
-    2024/10/11　Kawahara Rina
 
     複数のスクリプトから使用する定数や汎用関数などをまとめたクラス
 */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +19,7 @@ public class Common
 
     // 線の太さの最大値・最小値
     public const float MAX_THICKNESS = 10.0f;
-    public const float MIN_THICKNESS = 0.1f;
+    public const float MIN_THICKNESS =  0.1f;
 
     // 再生速度の最大値・最小値
     public const float MAX_SAMPLES = 4.0f;
@@ -70,31 +67,6 @@ public class Common
         return format;
     }
 
-    /*
-    // 列挙体シリアライズするとインスペクタからリストで選べる
-    [SerializeField] test testa;
-
-    enum test
-    {
-        a,
-        b
-    }
-
-    // Header：インスペクタに変数の説明出てくる
-    // Tooltip：変数にカーソル合わせた時に変数の説明出てくる
-    
-    [Header("コメント")]
-    [SerializeField] private GameObject a;
-
-    [Header("bbb")]
-    [SerializeField] private GameObject b;
-
-    [Tooltip("bbb")]
-    [SerializeField] private GameObject b;
-    */
-
-
-
     /// <summary>
     /// オブジェクトをアクティブ・非アクティブにする関数
     /// </summary>
@@ -115,13 +87,4 @@ public class Common
         // 指定したテキストを表示
         _text.text = _msg;
     }
-
-    // 遅延処理関数
-    /*
-    public static IEnumerator WaitForSecond(float _sec)
-    {
-        // 指定した秒数待つ
-        yield return new WaitForSeconds(_sec);
-    }
-    */
 }

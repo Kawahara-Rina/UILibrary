@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+    FadeAnimation.cs
+
+    フェードイン・アウトアニメーションクラス
+*/
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FadeAnimation : MonoBehaviour
 {
@@ -9,15 +11,15 @@ public class FadeAnimation : MonoBehaviour
     public
         enum FadeType
     {
-        fadeIn,
-        fadeOut
+        FadeIn,
+        FadeOut
     };
 
     #region - フェードイン・アウトの指定
     [Header("フェードイン・アウトの指定")]
     [Tooltip("動的に制御したい場合は、任意のタイミングでこのフラグを切り替えてください。")]
     #endregion
-    [SerializeField] public FadeType fadeType = FadeType.fadeIn;
+    [SerializeField] public FadeType fadeType = FadeType.FadeIn;
     
     #region - 最初からアニメーションをするかどうか
     [Header("最初からアニメーションをするかどうか(true:する,false:しない)")]
@@ -27,8 +29,8 @@ public class FadeAnimation : MonoBehaviour
 
     #region - 透明度の最大値
     [Header("透明度の最大値(CanvasGroupの透明度)")]
-    [Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_ALPHA, Common.MAX_ALPHA)]
+    [Tooltip("0.1～1.0の値。0が小さい")]
+    [Range(Common.MIN_ALPHA+0.1f, Common.MAX_ALPHA)]
     #endregion
     [SerializeField] private float maxAlpha = 1.0f;
 
@@ -54,7 +56,7 @@ public class FadeAnimation : MonoBehaviour
     /// </summary>
     public void ShowFadeIn()
     {
-        fadeType = FadeType.fadeIn;
+        fadeType = FadeType.FadeIn;
         isShow = true;
     }
 
@@ -63,7 +65,7 @@ public class FadeAnimation : MonoBehaviour
     /// </summary>
     public void ShowFadeOut()
     {
-        fadeType = FadeType.fadeOut;
+        fadeType = FadeType.FadeOut;
         isShow = true;
     }
 
@@ -82,7 +84,7 @@ public class FadeAnimation : MonoBehaviour
     {
         if (isFirst)
         {
-            if (fadeType==FadeType.fadeIn)
+            if (fadeType==FadeType.FadeIn)
             {
                 // フェードイン→黒から透明に変化するため、アルファ値は1.0
                 GetComponent<CanvasGroup>().alpha = 1.0f;
@@ -103,7 +105,7 @@ public class FadeAnimation : MonoBehaviour
     private void Fade()
     {
         // フェードイン
-        if (fadeType == FadeType.fadeIn)
+        if (fadeType == FadeType.FadeIn)
         {
             if (GetComponent<CanvasGroup>().alpha > minAlpha)
             {

@@ -1,4 +1,8 @@
-using System.Collections;
+/*
+    OutLine.cs
+
+    アウトライン生成クラス
+*/
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

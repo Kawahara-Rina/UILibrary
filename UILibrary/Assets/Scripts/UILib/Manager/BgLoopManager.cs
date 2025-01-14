@@ -1,5 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+    BgLoopManager.cs
+
+    背景のループ表示管理クラス
+*/
 using UnityEngine;
 
 public class BgLoop : MonoBehaviour

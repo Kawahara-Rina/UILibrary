@@ -1,9 +1,11 @@
-using System.Collections;
+/*
+    TapEffectManager.cs
+
+    タップエフェクト管理クラス
+*/
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class TapEffectManager : MonoBehaviour
 {

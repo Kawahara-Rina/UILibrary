@@ -1,5 +1,9 @@
+/*
+    TapEffectAnimation.cs
+
+    タップエフェクト・ロングタップエフェクトアニメーションクラス
+*/
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

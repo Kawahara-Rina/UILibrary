@@ -1,5 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+    ZoomAnimation.cs
+
+    ズームイン・アウトアニメーションクラス
+*/
 using UnityEngine;
 
 public class ZoomAnimation : MonoBehaviour

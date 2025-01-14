@@ -1,5 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+    TimerManager.cs
+
+    タイマーの管理クラス
+*/
 using UnityEngine;
 using UnityEngine.UI;
 

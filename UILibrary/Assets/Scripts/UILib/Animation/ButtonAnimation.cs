@@ -1,11 +1,8 @@
 /*
     ButtonManager.cs
-    2024/10/09  Kawahara Rina
 
-    ボタンのアニメーションを制御するクラス
+    ボタンアニメーションクラス
 */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonAnimation : MonoBehaviour
