@@ -1,5 +1,5 @@
 /*
-    ButtonManager.cs
+    ButtonAnimation.cs
 
     ボタンアニメーションクラス
 */
