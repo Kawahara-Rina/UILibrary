@@ -1,4 +1,5 @@
 # 目次
+- パッケージダウンロード
 - ライブラリ概要
   1. [概要](#ライブラリ概要)
   2. [パッケージ一覧](#2-パッケージ一覧)
@@ -17,6 +18,11 @@
 <br>
 <br>
 
+# パッケージダウンロード
+#### 最新版の各パッケージのダウンロードは[こちら(https://github.com/Kawahara-Rina/UILibrary/releases/tag/v1.0.0)](https://github.com/Kawahara-Rina/UILibrary/releases/tag/v1.0.0)
+#### 完全版パッケージのダウンロードは[こちら(https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/UIlib.unitypackage)](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/UIlib.unitypackage)
+<br>
+
 # ライブラリ概要
 ## 1. 概要
 - 汎用化された**UIのアニメーションや演出**を、プレファブやマネージャーを用いて簡単に使用できるライブラリです。
@@ -31,7 +37,7 @@
 ## 2. パッケージ一覧
 | パッケージ名            | 内容                                                                                | 備考                                                                                                                                                |
 | ---                    | ---                                                                                | ---                                                                                                                                                 |
-| UILib                  | 以下のすべてのパッケージを含む完全版パッケージ                                         | 内容物の使用方法については、[こちら](#各パッケージ使用方法)から参照してください。                                                                                                                                                   |
+| UILib                  | 以下のすべてのパッケージを含む完全版パッケージ                                         | 内容物の使用方法については、[こちら](#各パッケージ使用方法)から参照してください。<br>ダウンロードは[こちら(https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/UIlib.unitypackage)](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/UIlib.unitypackage))                                                                                                                                                   |
 | ButtonAnimationPackage | ボタンの拡大縮小アニメーションを行うためのクラス、プレファブを含むパッケージ              | パッケージに含まれる **Buttonプレファブ** をヒエラルキー上に<br>ドラッグアンドドロップでスムーズに使用できます。<br>使用方法は[こちら](#1-ボタンアニメーション) |
 | ZoomAnimationPackage   | パネル等のズームイン・アウトアニメーションを行うためのクラスを含むパッケージ              | 使用方法は[こちら](#2-パネルアニメーション-ズーム)                                                                                                      |
 | SlideAnimationPackage  | パネル等のスライドイン・アウトアニメーションを行うためのクラスを含むパッケージ            | 使用方法が複雑なため、必ず[使用時の注意点](#3-パネルアニメーション-スライド)を参照してください。<br>使用方法は[こちら](#3-パネルアニメーション-スライド)        |
@@ -77,6 +83,7 @@
 - カーソルを合わせた時に縮小・離れた時に拡大するアニメーション
 - ソース : **ButtonAnimation.cs** (Scripts/UILib/Animation/ButtonAnimation.cs)
 - プレファブ : **ButtonPrefab**   (Resources/UILib/Prefabs/ButtonPrefab)
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/ButtonAnimationPackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/ButtonAnimationPackage.unitypackage)
 
 #### 主な使用方法
 1. Resources/Prefabs/**ButtonPrefab**をキャンバス上にドラッグアンドドロップ。
@@ -157,7 +164,8 @@
 - パネル表示・非表示時のスライドイン・アウトアニメーション<br>
   指定した開始座標から指定した停止座標に向けてスライドイン・アウト。
 - ソース : **SlideAnimation.cs** (Scripts/UILib/Animation/SlideAnimation.cs)
-- 
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/SlideAnimationPackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/SlideAnimationPackage.unitypackage)
+
 #### 主な使用方法
 1. Scripts/UILib/Animation/**SlideAnimation.cs**を、アニメーションさせたいパネル等にアタッチ。
 2. **SlideAnimation.cs**のアニメーションの速度、スライドの方向、スライドアウトの動き、スライドイン時の開始・停止位置を設定。(インスペクタ上で設定)
@@ -197,6 +205,7 @@
 - 画面切り替え時等のフェードイン・アウト演出
 - ソース : **FadeAnimation.cs** (Scripts/UILib/Animation/FadeAnimation.cs)
 - プレファブ : **FadePrefab** (Resources/UILib/Prefabs/FadePrefab)
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/FadePackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/FadePackage.unitypackage)
 
 #### 主な使用方法
 1. Resources/UILib/Prefabs/**FadePrefab**をキャンバス上にドラッグアンドドロップ。
@@ -229,7 +238,8 @@
 ## 5. 背景のループ
 - 指定した背景画像2枚をループ(スクロール)表示
 - ソース : **BgLoopManager.cs** (Scripts/UILib/Manager/BgLoopManager.cs)
-- 
+- ダウンロード : [(https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/BgLoopPackage.unitypackage)](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/BgLoopPackage.unitypackage)
+
 #### 主な使用方法
 1. 空のオブジェクトを作成(BgLoopManager等)
 2. 作成した空のオブジェクトにScripts/UILib/Manager/BgLoopManager.csをアタッチ
@@ -270,6 +280,7 @@
 - 画面タップ時・長押し時にエフェクトを表示
 - ソース : **TapEffectAnimation.cs、TapEffectManager.cs** (Scripts/UILib/Animation/TapEffectAnimation.cs、Scripts/UILib/Manager/TapEffectManager.cs)
 - プレファブ : **TapEffectPrefab** (Resources/UILib/Prefabs/TapEffectPrefab)
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/TapEffectPackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/TapEffectPackage.unitypackage)
 
 #### 主な使用方法
 1. 空のオブジェクトを作成(TapEffectManager等)
@@ -299,7 +310,8 @@
 ## 7. テキストのアウトライン
 - テキストに滑らかなアウトラインを付ける
 - ソース : **OutLine.cs** (Scripts/UILib/Other/OutLine.cs)
-- 
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/TextOutLinePackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/TextOutLinePackage.unitypackage)
+
 #### 主な使用方法
 1. アウトラインを付けたいTextをCanvas上に用意。
 2. 用意したTextに**OutLine.cs**をアタッチし、アウトラインの太さ・色を設定。
@@ -321,7 +333,8 @@
 ## 8. スコア表示
 - スコアを表示し、加算・減算処理を行う
 - ソース : **ScoreManager.cs** (Scripts/UILib/Manager/ScoreManager.cs)
-- 
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/ScorePackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/ScorePackage.unitypackage)
+
 #### 主な使用方法
 1. 空のオブジェクトを作成(ScoreManager等)
 2. 作成した空のオブジェクトにScripts/UILib/Manager/ScoreManager.csをアタッチ
@@ -358,7 +371,8 @@
 ## 9. タイマー表示
 - タイマーを表示し、カウントアップ・ダウン処理を行う
 - ソース : **TimerManager.cs** (Scripts/UILib/Manager/TimerManager.cs)
-- 
+- ダウンロード : [https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/TimerPackage.unitypackage](https://github.com/Kawahara-Rina/UILibrary/releases/download/v1.0.0/TimerPackage.unitypackage)
+
 #### 主な使用方法
 1. 空のオブジェクトを作成(TimerManager等)
 2. 作成した空のオブジェクトにScripts/UILib/Manager/TimerManager.csをアタッチ
