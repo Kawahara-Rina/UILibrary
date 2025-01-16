@@ -1,12 +1,12 @@
 /*
-    Common.cs
+    uiCommon.cs
 
     複数のスクリプトから使用する定数や汎用関数などをまとめたクラス
 */
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Common
+public class uiCommon
 {
     // 共通定数
     // スケールの最大値・最小値

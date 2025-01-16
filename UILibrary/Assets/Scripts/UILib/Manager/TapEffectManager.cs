@@ -26,7 +26,7 @@ public class TapEffectManager : MonoBehaviour
     #region - タップエフェクトのアニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
-    [Range( Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
+    [Range( uiCommon.MAX_SAMPLES, uiCommon.MIN_SAMPLES)]
     #endregion
     [SerializeField] public float tapEffectSamples = 0.4f;
 
@@ -42,14 +42,14 @@ public class TapEffectManager : MonoBehaviour
     #region - ロングタップエフェクトのアニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
-    [Range(Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
+    [Range(uiCommon.MAX_SAMPLES, uiCommon.MIN_SAMPLES)]
     #endregion
     [SerializeField] public float longTapEffectSamples = 1.0f;
 
     #region - ロングタップエフェクトの生成速度
     [Header("エフェクト生成の速度")]
     [Tooltip("0.1～4.0の値。4が遅い、0.1が早い")]
-    [Range(Common.MAX_SAMPLES, Common.MIN_SAMPLES)]
+    [Range(uiCommon.MAX_SAMPLES, uiCommon.MIN_SAMPLES)]
     #endregion
     [SerializeField] public float generateSamples = 0.1f;
 
@@ -84,7 +84,7 @@ public class TapEffectManager : MonoBehaviour
         canvasRect = canvas.GetComponent<RectTransform>();
 
         // タップエフェクトに使用するオブジェクトを生成し、リストに登録
-        for (int i = 0; i < Common.GENERATE_COUNT; i++)
+        for (int i = 0; i < uiCommon.GENERATE_COUNT; i++)
         {
             // ロングタップエフェクト用
             var tmpLong = Instantiate(tapEffectPrefab);
@@ -124,7 +124,7 @@ public class TapEffectManager : MonoBehaviour
         // EffectAnimationコルーチンを開始
         StartCoroutine(_list[_index].GetComponent<TapEffectAnimation>().EffectAnimation(
             _sprites,
-            _samples * Common.MIN_SAMPLES));
+            _samples * uiCommon.MIN_SAMPLES));
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public class TapEffectManager : MonoBehaviour
         ShowEffect(tapObjList, tapIndex, tapEffectSprites, tapEffectSamples);
 
         // 添え字をカウント
-        if (tapIndex < Common.GENERATE_COUNT - 1)
+        if (tapIndex < uiCommon.GENERATE_COUNT - 1)
         {
             tapIndex++;
         }
@@ -160,7 +160,7 @@ public class TapEffectManager : MonoBehaviour
             ShowEffect(longTapObjList, longTapIndex, longTapEffectSprites, longTapEffectSamples);
 
             // 添え字をカウント
-            if (longTapIndex < Common.GENERATE_COUNT - 1)
+            if (longTapIndex < uiCommon.GENERATE_COUNT - 1)
             {
                 longTapIndex++;
             }

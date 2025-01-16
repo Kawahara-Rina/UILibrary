@@ -42,7 +42,7 @@ public class TimerManager : MonoBehaviour
     #region - 小数点位置の指定
     [Header("小数点位置の指定\nNone : 小数点以下表示なし\nFirst : 小数第1位まで表示\nSecond : 少数第2位まで表示")]
     #endregion
-    [SerializeField] private Common.DecimalPlace decimalPlace = Common.DecimalPlace.None;
+    [SerializeField] private uiCommon.DecimalPlace decimalPlace = uiCommon.DecimalPlace.None;
 
     // 小数点位置指定用
     private string format;
@@ -53,7 +53,7 @@ public class TimerManager : MonoBehaviour
     private void Init()
     {
         // 小数点位置指定
-        format = Common.SetDecimalPlace(decimalPlace);
+        format = uiCommon.SetDecimalPlace(decimalPlace);
 
         // 初期値を表示
         text.text = timer.ToString(format);

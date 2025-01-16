@@ -33,21 +33,21 @@ public class ZoomAnimation : MonoBehaviour
     #region - スケールの最大値
     [Header("スケールの最大値(拡大時)")]
     [Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
+    [Range(uiCommon.MIN_SCALE, uiCommon.MAX_SCALE)]
     #endregion
     [SerializeField] private float maxScale = 1.0f;
 
     #region - スケールの最小値
     [Header("スケールの最小値(縮小時)")]
     [Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_SCALE, Common.MAX_SCALE)]
+    [Range(uiCommon.MIN_SCALE, uiCommon.MAX_SCALE)]
     #endregion
     [SerializeField] private float minScale = 0;
 
     #region - アニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。0が遅い")]
-    [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
+    [Range(uiCommon.MIN_SAMPLES, uiCommon.MAX_SAMPLES)]
     #endregion
     [SerializeField] private float samples = 1.0f;
 

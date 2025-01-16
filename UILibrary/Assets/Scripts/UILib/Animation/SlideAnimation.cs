@@ -50,7 +50,7 @@ public class SlideAnimation : MonoBehaviour
     #region - アニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。0が遅い")]
-    [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
+    [Range(uiCommon.MIN_SAMPLES, uiCommon.MAX_SAMPLES)]
     #endregion
     [SerializeField] private float samples = 2.0f;
 

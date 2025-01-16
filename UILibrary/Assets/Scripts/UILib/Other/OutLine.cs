@@ -19,7 +19,7 @@ public class OutLine : BaseMeshEffect
     #region - アウトラインの太さ
     [Header("アウトラインの太さ")]
     [Tooltip("0,0～10.0の値。0が細い、10が太い。")]
-    [Range(Common.MIN_THICKNESS, Common.MAX_THICKNESS)]
+    [Range(uiCommon.MIN_THICKNESS, uiCommon.MAX_THICKNESS)]
     #endregion
     [SerializeField] float thickness = 3.0f; 
 

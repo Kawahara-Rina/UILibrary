@@ -30,21 +30,21 @@ public class FadeAnimation : MonoBehaviour
     #region - 透明度の最大値
     [Header("透明度の最大値(CanvasGroupの透明度)")]
     [Tooltip("0.1～1.0の値。0が小さい")]
-    [Range(Common.MIN_ALPHA+0.1f, Common.MAX_ALPHA)]
+    [Range(uiCommon.MIN_ALPHA+0.1f, uiCommon.MAX_ALPHA)]
     #endregion
     [SerializeField] private float maxAlpha = 1.0f;
 
     #region - 透明度の最小値
     [Header("透明度の最小値(CanvasGroupの透明度)")]
     [Tooltip("0.0～1.0の値。0が小さい")]
-    [Range(Common.MIN_ALPHA, Common.MAX_ALPHA)]
+    [Range(uiCommon.MIN_ALPHA, uiCommon.MAX_ALPHA)]
     #endregion
     [SerializeField] private float minAlpha = 0;
 
     #region - アニメーションの速度
     [Header("アニメーションの速度")]
     [Tooltip("0.1～4.0の値。0が遅い")]
-    [Range(Common.MIN_SAMPLES, Common.MAX_SAMPLES)]
+    [Range(uiCommon.MIN_SAMPLES, uiCommon.MAX_SAMPLES)]
     #endregion
     [SerializeField] private float samples=1.0f;
 
